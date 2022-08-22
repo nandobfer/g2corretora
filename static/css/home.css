@@ -1,0 +1,17 @@
+* {
+    margin: 0.2vw
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.radios-container {
+    display: flex;
+}

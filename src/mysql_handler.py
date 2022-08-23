@@ -72,11 +72,11 @@ class Mysql():
         DATA requer (ID, USUÁRIO, SENHA, NOME, ENDEREÇO, TIPO DE MEMBRO) '''
 
         try:
-            sql = f"INSERT INTO cadastros (id, nome, email, documento, cep VALUES ({data['id']}, '{data['nome']}', '{data['email']}', '{data['documento']}', '{data['cep']}')"
+            sql = f"INSERT INTO cadastros (id, nome, email, documento, cep) VALUES ({data['id']}, '{data['nome']}', '{data['email']}', '{data['documento']}', '{data['cep']}')"
             cursor = self.connection.cursor()
             cursor.execute(sql)
         except:
-            sql = f'INSERT INTO cadastros (id, nome, email, documento, cep VALUES ({data["id"]}, "{data["nome"]}", "{data["email"]}", "{data["documento"]}", "{data["cep"]}")'
+            sql = f'INSERT INTO cadastros (id, nome, email, documento, cep) VALUES ({data["id"]}, "{data["nome"]}", "{data["email"]}", "{data["documento"]}", "{data["cep"]}")'
             cursor = self.connection.cursor()
             cursor.execute(sql)
 

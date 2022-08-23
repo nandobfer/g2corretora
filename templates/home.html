@@ -4,44 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="/static/brython/brython.js"></script>
-    <script type="text/javascript" src="/static/brython/brython_stdlib.js"></script>
-    <link rel="stylesheet" href="/static/css/home.css">
-    <title>G2 Corretora - Home</title>
+    <title>G2 - Home</title>
 </head>
-<body onload="brython({cache:true})">
-    <div class="container">
-        <h2>Cadastro</h2>
-        <form action="javascript:void(0);">
-            <label for="input-nome">Representante</label>
-            <input id="input-nome" type="text">
-
-            <div class="radios-container">
-                <div>
-                    <label for="radio-cpf">Pessoa física</label>
-                    <input class="radios" type="radio" id="radio-cpf" value="cpf" name="person">
-                </div>
-                <div>
-                    <label for="radio-cnpj">Pessoa jurídica</label>
-                    <input class="radios" type="radio" id="radio-cnpj" value="cnpj" name="person">
-                </div>
-            </div>
-
-            <label id="label-documento" for="input-documento">CPF</label>
-            <input id="input-documento" type="text">
-
-            <label for="input-email">E-mail</label>
-            <input id="input-email" type="email">
-
-            <label for="input-cep">CEP</label>
-            <input id="input-cep" type="text" maxlength="9">
-
-            <button type="submit" id="signup-form-button">Cadastrar</button>
-        </form>
-    </div>
+<body>
+    <button onclick="window.location.href='/cadastro/'">Cadastro</button>
+    <button onclick="window.location.href='/tabela/'">Visualização</button>
 </body>
-<footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/python" src="/static/brython/signup.py"></script>
-</footer>
 </html>

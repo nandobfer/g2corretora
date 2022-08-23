@@ -62,7 +62,11 @@ def sendForm(ev):
         key = item.attrs['id'][6:]
         data.update({key: item.value})
 
-    _ajax('/signup/', print, method='POST', data=data)
+    def signupFeedback(req):
+        data = eval(req.text)
+        jQuery('#feedback').text(data)
+        
+    _ajax('/try_signup/', signupFeedback, method='POST', data=data)
     
 def _ajax(url, onComplete, method='GET', data={}):
     req = ajax.Ajax()

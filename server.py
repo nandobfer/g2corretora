@@ -17,7 +17,7 @@ def cadastro():
 @app.route('/tabela/', methods=['GET'])
 def tabela():
     
-    return render_template('tabela.html')
+    return render_template('visualization.html')
 
 @app.route('/try_signup/', methods=['POST'])
 def signup_form():
@@ -33,6 +33,11 @@ def signup_form():
     except Exception as error:
         print(error)
         return 'Erro'
+    
+@app.route('/get_table_data/', methods=['GET'])
+def get_table_data():
+    data = session.database.fetchTable(0, 'cadastros')
+    return str(data)
 
 # end of file
 app.run(debug=True, host="0.0.0.0", port="5001")

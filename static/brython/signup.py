@@ -63,7 +63,7 @@ def sendForm(ev):
         data.update({key: item.value})
 
     def signupFeedback(req):
-        data = eval(req.text)
+        data = req.text
         jQuery('#feedback').text(data)
         
     _ajax('/try_signup/', signupFeedback, method='POST', data=data)

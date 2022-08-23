@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/static/brython/brython.js"></script>
+    <script type="text/javascript" src="/static/brython/brython_stdlib.js"></script>
+    <link rel="stylesheet" href="/static/css/visualization.css">
+    <title>G2 - Visualização</title>
+</head>
+<body onload="brython({cache:true})">
+    <div class="side-container">
+        <img id="logo" src="/static/images/logo.webp" alt="">
+        <div class="side-bar-container">
+            <div>
+                <img src="/static/images/inbox.svg" alt="inbox">
+                <p>Caixa de Entrada</p>
+            </div>
+            <div>
+                <img src="/static/images/sino.svg" alt="sino">
+                <p>Notificações</p>
+            </div>
+            <hr>
+            <div>
+                <img src="/static/images/settings.svg" alt="sino">
+                <p>Configurações</p>
+            </div>
+            <div>
+                <img src="/static/images/exit.svg" alt="sino">
+                <p>Sair</p>
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        <h1>Visualização</h1>
+        <table>
+            <tr>
+                <thead class="table-header">
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Documento</th>
+                    <th>CEP</th>
+                </thead>
+            </tr>
+        </table>
+    </div>
+</body>
+<footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/python" src="/static/brython/visualization.py"></script>
+</footer>
+</html>

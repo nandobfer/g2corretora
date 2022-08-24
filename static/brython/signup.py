@@ -22,9 +22,11 @@ def changePerson(ev):
     if person == 'cpf':
         documento.attr('maxlength', '14')
         documento.on('input', formatCPF)
+        jQuery('.empresa').hide()
     elif person == 'cnpj':
         documento.attr('maxlength', '18')
         documento.on('input', formatCNPJ)
+        jQuery('.empresa').show()
 
 def formatCPF(ev):
     documento = jQuery('#input-documento')

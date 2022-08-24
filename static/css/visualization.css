@@ -4,12 +4,14 @@
 }
 @font-face {
     font-family: Roboto;
-    src: url("/static/fonts/Roboto-Black.ttf") ;
+    src: url("/static/fonts/Roboto-Regular.ttf") ;
 }
 
 :root {
     --primary-color: #403380;
     --secondary-color :#2A205B;
+    --input-background-color: #EFEFEF;
+    --line: #707070;
 }
 
 body {
@@ -29,6 +31,7 @@ body {
     flex-direction: column;
     outline: 5px solid red;
     align-items: center;
+    margin-right: 3vw;
 }
 
 .side-bar-container {
@@ -42,6 +45,7 @@ body {
     color: white;
     font-size: 2.2vh;
     padding: 5vh 0;
+    outline: 5px solid purple;
 
 }
 
@@ -52,6 +56,7 @@ body {
 
 .side-bar-container > div:hover {
     background-color: var(--secondary-color);
+    cursor: pointer;
 }
 
 .side-bar-container > hr {
@@ -70,6 +75,80 @@ body {
     height: 97.8vh;
 }
 
-#config-button {
-    cursor: pointer
+.search-container {
+    display:flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    margin-top: 3vh;
+    height: 5vh;
+    outline: 5px solid yellow;;
+
 }
+
+.search-container > img:first-of-type {
+    position: absolute;
+    left: -1vw;
+    height: 70%;
+}
+
+.search-container > input {
+    flex: 0.9;
+    height: 100%;
+    border-radius: 2vw;
+    background-color: var(--input-background-color);
+    outline: none;
+    border: none;
+    padding-left: 3.5vw;
+    font-size: 2.5vh;
+}
+
+.search-container > img {
+    height: 50%;
+    margin: 0 2vw;
+}
+
+.search-container > img:last-of-type {
+    height: 70%;
+}
+
+.table-container {
+    outline: 5px solid green;
+    margin-top: 4vh;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+th:first-of-type {
+    border-top-left-radius: 2vw;
+    border-bottom-left-radius: 2vw;
+}
+
+th:last-of-type {
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+}
+
+td {
+    border-bottom: 2px solid var(--line);
+    height: 7vh;
+    /* padding: 0 2.5vw; */
+    padding: 0 1vw;
+}
+
+td > img {
+    height: 55%;
+    cursor: pointer;
+}
+
+tbody td {
+    text-align: center;
+  }

@@ -1,3 +1,16 @@
+:root {
+    --primary-color: #403380;
+    --secondary-color :#2A205B;
+    --input-background-color: #EFEFEF;
+    --line: #707070;
+}
+
+body {
+    display: flex;
+    width: 99vw;
+    font-family: Roboto;
+}
+
 #logo {
     width: 80%;
 }

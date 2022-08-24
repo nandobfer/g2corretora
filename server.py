@@ -14,6 +14,11 @@ def cadastro():
     
     return render_template('signup.html')
     
+@app.route('/config/', methods=['GET'])
+def config():
+    
+    return render_template('config.html')
+    
 @app.route('/tabela/', methods=['GET'])
 def tabela():
     

@@ -69,3 +69,7 @@ body {
     outline: 5px solid blue;
     height: 97.8vh;
 }
+
+#config-button {
+    cursor:pointer
+}

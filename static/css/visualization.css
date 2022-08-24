@@ -75,11 +75,20 @@ td {
 }
 
 td > img {
-    height: 55%;
+    height: 40%;
     cursor: pointer;
 }
 
 tbody td {
     text-align: center;
     line-height: 3vh;
-  }
+}
+
+.foot-container {
+    display: flex;
+    justify-content: center;
+}
+
+.pages-container {
+    display: flex;
+}

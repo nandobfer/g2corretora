@@ -15,3 +15,7 @@
 .radios-container {
     display: flex;
 }
+
+.empresa {
+    display: none;
+}

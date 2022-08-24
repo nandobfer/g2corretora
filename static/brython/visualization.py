@@ -12,11 +12,11 @@ def _ajax(url, onComplete, method='GET', data={}):
 def initialRender(req):
     data = eval(req.text)
     for item in data:
-        row = '<tr>'
+        row = f'<tr><td><input type="checkbox" name="checkbox" id="checkbox-{item[0]}">'
         item.pop(0)
         for info in item:
             row += f'<td>{info}</td>'
-        row += '</tr>'
-        jQuery('table').append(row)
+        row += '<td><img src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></td></tr>'
+        jQuery('tbody').append(row)
     
 _ajax('/get_table_data/', initialRender, method='GET')

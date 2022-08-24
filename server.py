@@ -21,12 +21,19 @@ def tabela():
 
 @app.route('/try_signup/', methods=['POST'])
 def signup_form():
+    empresa = request.form['empresa']
+    if not empresa:
+        empresa = 'Pessoa física'
     try:
         data = {
             'nome': request.form['nome'],
             'email': request.form['email'],
             'documento': request.form['documento'],
             'cep': request.form['cep'],
+            'telefone': request.form['telefone'],
+            'vencimento': '01/01/2001',
+            'status': 'Aguardando',
+            'empresa': empresa,
         }
         session.signup(data)
         return 'Sucesso'

@@ -1,12 +1,3 @@
-@font-face {
-    font-family: Montserrats;
-    src: url("/static/fonts/Montserrat-Regular.otf") ;
-}
-@font-face {
-    font-family: Roboto;
-    src: url("/static/fonts/Roboto-Regular.ttf") ;
-}
-
 .main-container {
     flex: 0.8;
     outline: 5px solid blue;

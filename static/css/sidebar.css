@@ -18,6 +18,8 @@ body {
     display: flex;
     width: 99vw;
     font-family: Roboto;
+    height: 97.8vh;
+
 }
 
 #logo {

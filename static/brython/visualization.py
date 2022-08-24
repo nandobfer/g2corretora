@@ -16,6 +16,8 @@ def initialRender(req):
         item.pop(0)
         for info in item:
             row += f'<td>{info}</td>'
+            if item.index(info) == 5:
+                break
         row += '<td><img src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></td></tr>'
         jQuery('tbody').append(row)
     

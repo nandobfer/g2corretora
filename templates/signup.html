@@ -16,9 +16,6 @@
             <label for="input-nome">Representante</label>
             <input id="input-nome" type="text">
 
-            <label for="input-telefone">Telefone</label>
-            <input id="input-telefone" type="text">
-
             <div class="radios-container">
                 <div>
                     <label for="radio-cpf">Pessoa física</label>
@@ -30,14 +27,20 @@
                 </div>
             </div>
 
-            <label id="label-documento" for="input-documento">CPF</label>
-            <input id="input-documento" type="text">
+            <label class="pessoa" id="label-cpf" for="input-cpf">CPF</label>
+            <input class="pessoa" id="input-cpf" type="text">
+
+            <label class="empresa" id="label-cnpj" for="input-cnpj">CNPJ</label>
+            <input class="empresa" id="input-cnpj" type="text">
 
             <label class="empresa" id="label-empresa" for="input-empresa">Empresa</label>
             <input class="empresa" id="input-empresa" type="text">
 
             <label for="input-email">E-mail</label>
             <input id="input-email" type="email">
+
+            <label for="input-telefone">Telefone</label>
+            <input id="input-telefone" type="text" maxlength="15">
 
             <label for="input-cep">CEP</label>
             <input id="input-cep" type="text" maxlength="9">
@@ -49,6 +52,7 @@
 </body>
 <footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/static/javascript/jquery.mask.js"></script>
     <script type="text/python" src="/static/brython/signup.py"></script>
 </footer>
 </html>

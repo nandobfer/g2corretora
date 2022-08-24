@@ -1,0 +1,36 @@
+.search-container {
+    display:flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    margin-top: 3vh;
+    height: 5vh;
+    outline: 5px solid yellow;;
+
+}
+
+.search-container > img:first-of-type {
+    position: absolute;
+    left: -1vw;
+    height: 70%;
+}
+
+.search-container > input {
+    flex: 0.9;
+    height: 100%;
+    border-radius: 2vw;
+    background-color: var(--input-background-color);
+    outline: none;
+    border: none;
+    padding-left: 3.5vw;
+    font-size: 2.5vh;
+}
+
+.search-container > img {
+    height: 50%;
+    margin: 0 2vw;
+}
+
+.search-container > img:last-of-type {
+    height: 70%;
+}

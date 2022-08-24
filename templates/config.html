@@ -5,8 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações</title>
+    <link rel="stylesheet" href="/static/css/sidebar.css">
+    <link rel="stylesheet" href="/static/css/config.css">
 </head>
 <body>
-    <h1>oi</h1>
+    <div class="side-container">
+        <img id="logo" src="/static/images/logo.webp" alt="">
+        <div class="side-bar-container">
+            <div>
+                <img src="/static/images/inbox.svg" alt="inbox">
+                <p>Caixa de Entrada</p>
+            </div>
+            <div>
+                <img src="/static/images/sino.svg" alt="sino">
+                <p>Notificações</p>
+            </div>
+            <hr>
+            <div id="config-button" onclick="window.location.href='/config/'">
+                <img src="/static/images/settings.svg" alt="sino">
+                <p>Configurações</p>
+            </div>
+            <div>
+                <img src="/static/images/exit.svg" alt="sino">
+                <p>Sair</p>
+            </div>
+        </div>
+    </div>
+    <div class="search-container">
+        <img src="/static/images/lupa.svg" alt="">
+        <input type="text" placeholder="Pesquisar por empresa">
+        <img src="/static/images/stairs.svg" alt="stairs">
+        <img src="/static/images/sino2.svg" alt="sino2">
+    </div>
 </body>
 </html>

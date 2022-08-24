@@ -27,13 +27,16 @@ def tabela():
 @app.route('/try_signup/', methods=['POST'])
 def signup_form():
     empresa = request.form['empresa']
+    documento = request.form['cnpj']
     if not empresa:
         empresa = 'Pessoa física'
+        documento = request.form['cpf']
+        
     try:
         data = {
             'nome': request.form['nome'],
             'email': request.form['email'],
-            'documento': request.form['documento'],
+            'documento': documento,
             'cep': request.form['cep'],
             'telefone': request.form['telefone'],
             'vencimento': '01/01/2001',

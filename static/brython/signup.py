@@ -21,40 +21,22 @@ def changePerson(ev):
     
     if person == 'cpf':
         documento.attr('maxlength', '14')
-        documento.on('input', formatCPF)
         jQuery('.empresa').hide()
+        jQuery('.pessoa').show()
     elif person == 'cnpj':
         documento.attr('maxlength', '18')
-        documento.on('input', formatCNPJ)
         jQuery('.empresa').show()
+        jQuery('.pessoa').hide()
 
-def formatCPF(ev):
-    documento = jQuery('#input-documento')
-    try:
-        int(documento.val()[-1:])
-        if len(documento.val()) == 3:
-            documento.val(f'{documento.val()}.')
-        if len(documento.val()) == 7:
-            documento.val(f'{documento.val()}.')
-        if len(documento.val()) == 11:
-            documento.val(f'{documento.val()}-')
-    except:
-        documento.val(documento.val()[:-1])
+def maskCPF(ev):
+    jQuery('#input-cpf').mask('000.000.000-00')
 
-def formatCNPJ(ev):
-    documento = jQuery('#input-documento')
-    try:
-        int(documento.val()[-1:])
-        if len(documento.val()) == 2:
-            documento.val(f'{documento.val()}.')
-        if len(documento.val()) == 6:
-            documento.val(f'{documento.val()}.')
-        if len(documento.val()) == 10:
-            documento.val(f'{documento.val()}/')
-        if len(documento.val()) == 15:
-            documento.val(f'{documento.val()}-')
-    except:
-        documento.val(documento.val()[:-1])
+def maskCNPJ(ev):
+    jQuery('#input-cnpj').mask('00.000.000/0000-00')
+
+        
+def maskPhone(ev):
+    jQuery('#input-telefone').mask('(00) 00000-0000')
         
 def sendForm(ev):
     inputs = document.select('form > input')
@@ -68,6 +50,7 @@ def sendForm(ev):
         data = req.text
         jQuery('#feedback').text(data)
         
+    print(data)
     _ajax('/try_signup/', signupFeedback, method='POST', data=data)
     
 def _ajax(url, onComplete, method='GET', data={}):
@@ -77,6 +60,9 @@ def _ajax(url, onComplete, method='GET', data={}):
     req.set_header('content-type', 'application/x-www-form-urlencoded')
     req.send(data)
 
+jQuery('document').ready(maskPhone)
+jQuery('document').ready(maskCPF)
+jQuery('document').ready(maskCNPJ)
 jQuery('.radios').on('change', changePerson)
 jQuery('#radio-cpf').prop("checked", True).change()
 jQuery('form').on('submit', sendForm)

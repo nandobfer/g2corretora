@@ -2,7 +2,12 @@
     display: flex;
     flex: 0.8;
     flex-direction: column;
+    font-family: Roboto;
     margin: 0 0;
+}
+
+.main-container p {
+    margin: 0;
 }
 
 .search-container {
@@ -29,7 +34,7 @@
     background-color: var(--input-background-color);
     outline: none;
     border: none;
-    padding-left: 3.5vw;
+    padding-left: 4.5vw;
     font-size: 2.5vh;
 }
 
@@ -42,12 +47,51 @@
     height: 70%;
 }
 
+.buttons-area {
+    margin: 2vh 0;
+    display:flex;
+    flex-direction: row;
+    font-family: Roboto;
+    justify-items: normal;
+}
+
+.buttons-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1vw;
+    width: 12vw;
+}
+
+.default-button {
+    border-radius: 0.5vw;
+    background-color: var(--input-background-color);
+    border: none;
+    color: gray;
+    font-size: 2vh;
+    font-weight: bold;
+    margin: 1vh 0;
+    outline: none;
+    padding: 0.75vw;
+}
+
+.added-button {
+    border-radius: 0.5vw;
+    background-color: white;
+    border: none;
+    color: gray;
+    font-size: 2vh;
+    font-weight: bold;
+    margin: 1vh 0;
+    outline: 1px solid darkgray;
+    padding: 0.75vw;
+}
+
+button {
+    font-family: Roboto;
+}
+
 h1 {
     font-size: 130%;
     margin-top: 4vh;
     margin-bottom: 0.75vh;
-}
-
-.main-container p {
-    margin: 0;
 }

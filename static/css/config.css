@@ -90,6 +90,10 @@ button {
     font-family: Roboto;
 }
 
+.plusbutton {
+    cursor: pointer;
+}
+
 h1 {
     font-size: 130%;
     margin-top: 4vh;

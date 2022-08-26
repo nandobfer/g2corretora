@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <script type="text/javascript" src="/static/brython/brython.js"></script>
     <script type="text/javascript" src="/static/brython/brython_stdlib.js"></script>
 </head>
+
 <body onload="brython()">
     <div class="side-container">
         <img id="logo" src="/static/images/logo.webp" alt="">
@@ -50,8 +52,9 @@
                 <button class="default-button">Aviso 30 dias</button class="default-button">
                 <button class="default-button">Aviso 15 dias</button class="default-button">
             </div>
-            <div class="buttons-column">
-                <button id="plusbutton" class="added-button">+</button class="added-button">
+            <div class="buttons-column current-column">
+                <button class="default-button">Aguardando</button class="default-button">
+                <button class="added-button plusbutton">+</button class="added-button">
             </div>
         </div>
 
@@ -61,7 +64,9 @@
     </div>
 </body>
 <footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/python" src="/static/brython/config.py">
     </script>
 </footer>
+
 </html>

@@ -54,5 +54,10 @@ def get_table_data():
     data = session.database.fetchTable(0, 'cadastros')
     return str(data)
 
+@app.route('/get_added_buttons/', methods=['GET'])
+def get_added_buttons():
+    status_criados=session.database.fetchTable(0, 'status_criados')
+    return str(status_criados)
+
 # end of file
 app.run(debug=True, host="0.0.0.0", port="5001")

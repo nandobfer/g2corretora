@@ -7,8 +7,10 @@
     <title>Configurações</title>
     <link rel="stylesheet" href="/static/css/sidebar.css">
     <link rel="stylesheet" href="/static/css/config.css">
+    <script type="text/javascript" src="/static/brython/brython.js"></script>
+    <script type="text/javascript" src="/static/brython/brython_stdlib.js"></script>
 </head>
-<body>
+<body onload="brython()">
     <div class="side-container">
         <img id="logo" src="/static/images/logo.webp" alt="">
         <div class="side-bar-container">
@@ -49,7 +51,7 @@
                 <button class="default-button">Aviso 15 dias</button class="default-button">
             </div>
             <div class="buttons-column">
-                <button class="added-button">+</button class="added-button">
+                <button id="plusbutton" class="added-button">+</button class="added-button">
             </div>
         </div>
 
@@ -58,4 +60,8 @@
 
     </div>
 </body>
+<footer>
+    <script type="text/python" src="/static/brython/config.py">
+    </script>
+</footer>
 </html>

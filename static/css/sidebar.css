@@ -12,6 +12,8 @@
     --secondary-color :#2A205B;
     --input-background-color: #EFEFEF;
     --line: #707070;
+    --text-light-color: #B2B2B2;
+    --text-dark-color: #585858;
 }
 
 body {

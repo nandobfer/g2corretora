@@ -1,4 +1,6 @@
 .main-container {
+    display: flex;
+    flex-direction: column;
     flex: 0.8;
     outline: 5px solid blue;
     height: 97.8vh;
@@ -87,8 +89,28 @@ tbody td {
 .foot-container {
     display: flex;
     justify-content: center;
+    margin-top: auto;
 }
 
 .pages-container {
     display: flex;
+    color: var(--text-light-color);
+}
+
+.pages-container p {
+    cursor: pointer;
+}
+
+.pages {
+    display: flex;
+    margin: 0 1.5vw;
+    align-items: center;
+}
+
+.pages > p {
+    margin: 0 0.5vw;
+}
+
+.active-page-button {
+    color: var(--text-dark-color);
 }

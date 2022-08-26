@@ -51,6 +51,11 @@ def signup_form():
     
 @app.route('/get_table_data/', methods=['GET'])
 def get_table_data():
+    try:
+        if not session.database.connection.is_connected():
+            session.reconnectDatabase()
+    except:
+        pass
     data = session.database.fetchTable(0, 'cadastros')
     return str(data)
 

@@ -58,6 +58,17 @@ def buildTable(page):
         row += '<td><img src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></td></tr>'
         jQuery('tbody').append(row)
         
+    if current_page == pages[0].number:
+        jQuery('#previous-page').addClass('deactivated-button')
+    else:
+        jQuery('#previous-page').removeClass('deactivated-button')
+
+    if current_page == pages[-1].number:
+        jQuery('#next-page').addClass('deactivated-button')
+    else:
+        jQuery('#next-page').removeClass('deactivated-button')
+        
+        
         
 def buildNextPage(ev):
     cleanTable()

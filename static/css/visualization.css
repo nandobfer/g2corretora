@@ -114,3 +114,8 @@ tbody td {
 .active-page-button {
     color: var(--text-dark-color);
 }
+
+.deactivated-button {
+    opacity: 0.5;
+    pointer-events: none;
+}

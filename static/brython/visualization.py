@@ -43,6 +43,38 @@ def cleanTable():
     jQuery('.active-page-button').removeClass('active-page-button')
     jQuery('tbody > *').remove()
     
+def removeTooltips(ev):
+    jQuery('.action-tooltip').remove()
+    
+def showActionTooltip(ev):
+    removeTooltips(True)
+    id = ev.target.attrs['id'].split('-')[1]
+    parent = jQuery(f'#action-container-{id}')
+    container = f'<div id="action-tooltip-{id}" class="action-tooltip">\
+        <div class="arrow-up"></div>\
+        <div>\
+            <p>Ligar</p>\
+        </div>\
+        <hr>\
+        <div>\
+            <p>Mandar e-mail</p>\
+        </div>\
+        <hr>\
+        <div>\
+            <p>Ver cadastro</p>\
+        </div>\
+        <hr>\
+        <div>\
+            <p>Editar</p>\
+        </div>\
+        <hr>\
+        <div>\
+            <p>Deletar</p>\
+        </div>\
+    </div>'
+    parent.append(container)
+    jQuery(f'#action-tooltip-{id}').on('click', removeTooltips)
+    
 def buildTable(page):
     global current_page
     jQuery(page.button).addClass('active-page-button')
@@ -60,9 +92,11 @@ def buildTable(page):
             row += f'<td>{info}</td>'
             if item.index(info) == 6:
                 break
-        row += '<td><img src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></td></tr>'
+        row += f'<td><div id="action-container-{item[0]}" class="action-container"><img id="action-{item[0]}" src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></div></td></tr>'
         jQuery('tbody').append(row)
+        jQuery(f'#action-{item[0]}').on('click', showActionTooltip)
         
+    bindCheckboxes()
     if current_page == pages[0].number:
         jQuery('#previous-page').addClass('deactivated-button')
     else:
@@ -72,6 +106,7 @@ def buildTable(page):
         jQuery('#next-page').addClass('deactivated-button')
     else:
         jQuery('#next-page').removeClass('deactivated-button')
+        
     
 def checkAllBoxes(ev):
     if ev.target.checked:
@@ -88,12 +123,14 @@ def hoverRow(ev):
     else:
         row.removeClass('selected-row')
         
+    
+def bindCheckboxes():
+    jQuery('input[type="checkbox"]:not("#header-checkbox")').on('change', hoverRow)
+    jQuery('#header-checkbox').on('change', checkAllBoxes)
         
 def bindElements():
     jQuery('#next-page').on('click', buildNextPage)
     jQuery('#previous-page').on('click', buildPreviousPage)
-    jQuery('input[type="checkbox"]:not("#header-checkbox")').on('change', hoverRow)
-    jQuery('#header-checkbox').on('change', checkAllBoxes)
         
 def buildNextPage(ev):
     cleanTable()

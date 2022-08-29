@@ -3,6 +3,7 @@ from browser import document, alert, bind, ajax, window, html
 numero = 0
 jquery = window.jQuery
 plusbutton = jquery('.plusbutton')
+added_buttons = None
 
 
 def _ajax(url, onComplete, method='GET', data={}):
@@ -39,8 +40,10 @@ def change_plusbutton():
 
 
 def add_button(req):
+    global added_buttons
     global plusbutton
     data = eval(req.text)
+    added_buttons = data
     print(data)
     for item in data:
         check_column()
@@ -61,10 +64,19 @@ def submit(ev):
     input = jquery('.current-column > form > input')
     form = jquery('.current-column > form')
     texto = input.val()
-    alert(texto)
+    id = len(added_buttons)
+    data = {
+        'button_name': texto,
+        'id': id
+    }
 
     # enviar pro servidor
 
+    _ajax(url='/new_button/', onComplete=create_button, method='POST', data=data)
+
+
+def create_button(req):
+    form = jquery('.current-column > form')
     form.remove()
     jquery('.current-column').append(plusbutton)
     plusbutton.on('click', new_status)

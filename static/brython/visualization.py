@@ -52,6 +52,11 @@ def buildTable(page):
         for info in item:
             if item.index(info) == 0:
                 continue
+
+            if item.index(info) == 3:
+                row += f'<td><div class="status"><p>{info}</p><div class="arrow-down"></div><div class="arrow-up"></div></div></td>'
+                continue
+                
             row += f'<td>{info}</td>'
             if item.index(info) == 6:
                 break

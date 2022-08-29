@@ -125,8 +125,37 @@ tbody td {
     line-height: 3vh;
 }
 
+tbody td > div {
+    position: relative;
+    display: flex;
+    background-color: var(--status-container-color);
+    border-radius: 1vw;
+    height: fit-content;
+    padding: 0.5vh 2vw 0.5vh 1vw;
+}
+
+tbody td > div > p {
+    margin: 0;
+}
+
+tbody td > div > .arrow-down {
+    bottom: 1.1vh;
+}
+
+tbody td > div > .arrow-up {
+    top: 1.1vh;
+}
+
 .selected-row {
     background-color: var(--row-hovered-color);
+}
+
+.status {
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    border: 1px solid #272727;
 }
 
 .foot-container {

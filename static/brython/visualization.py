@@ -123,6 +123,8 @@ def hoverRow(ev):
     else:
         row.removeClass('selected-row')
         
+def toggleNotifications(ev):
+    jQuery('.notifications-tooltip').toggle()
     
 def bindCheckboxes():
     jQuery('input[type="checkbox"]:not("#header-checkbox")').on('change', hoverRow)
@@ -131,6 +133,7 @@ def bindCheckboxes():
 def bindElements():
     jQuery('#next-page').on('click', buildNextPage)
     jQuery('#previous-page').on('click', buildPreviousPage)
+    jQuery('.notifications-container').on('click', toggleNotifications)
         
 def buildNextPage(ev):
     cleanTable()
@@ -146,6 +149,7 @@ def initialRender(req):
     buildPages(data)
     buildTable(pages[0])
     bindElements()
+    # jQuery('.notifications-tooltip').hide()
         
     
 _ajax('/get_table_data/', initialRender, method='GET')

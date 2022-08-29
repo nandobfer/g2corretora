@@ -6,7 +6,7 @@ class Mysql():
     # def __init__(self) -> None:
     #     pass
     
-     def run(self, sql, commit = False):
+    def run(self, sql, commit = False):
         cursor = self.connection.cursor(buffered=True)
         cursor.execute(sql)
         data = None

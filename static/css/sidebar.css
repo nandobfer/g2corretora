@@ -14,6 +14,7 @@
     --line: #707070;
     --text-light-color: #B2B2B2;
     --text-dark-color: #585858;
+    --row-hovered-color: #F3F3F3;
 }
 
 body {

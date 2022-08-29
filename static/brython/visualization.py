@@ -48,7 +48,7 @@ def buildTable(page):
     jQuery(page.button).addClass('active-page-button')
     current_page = page.number
     for item in page.table:
-        row = f'<tr><td><input type="checkbox" name="checkbox" id="checkbox-{item[0]}">'
+        row = f'<tr id="row-{item[0]}"><td><input type="checkbox" name="checkbox" id="checkbox-{item[0]}">'
         for info in item:
             if item.index(info) == 0:
                 continue
@@ -67,8 +67,28 @@ def buildTable(page):
         jQuery('#next-page').addClass('deactivated-button')
     else:
         jQuery('#next-page').removeClass('deactivated-button')
+    
+def checkAllBoxes(ev):
+    if ev.target.checked:
+        jQuery('input[type="checkbox"]:not("#header-checkbox")').prop('checked', True)
+    else:
+        jQuery('input[type="checkbox"]:not("#header-checkbox")').prop('checked', False)
+    jQuery('input[type="checkbox"]:not("#header-checkbox")').change() 
+        
+def hoverRow(ev):
+    id = ev.target.attrs['id'].split('-')[1]
+    row = jQuery(f'#row-{id}')
+    if ev.target.checked:
+        row.addClass('selected-row')
+    else:
+        row.removeClass('selected-row')
         
         
+def bindElements():
+    jQuery('#next-page').on('click', buildNextPage)
+    jQuery('#previous-page').on('click', buildPreviousPage)
+    jQuery('input[type="checkbox"]:not("#header-checkbox")').on('change', hoverRow)
+    jQuery('#header-checkbox').on('change', checkAllBoxes)
         
 def buildNextPage(ev):
     cleanTable()
@@ -83,8 +103,7 @@ def initialRender(req):
     data = eval(req.text)
     buildPages(data)
     buildTable(pages[0])
-    jQuery('#next-page').on('click', buildNextPage)
-    jQuery('#previous-page').on('click', buildPreviousPage)
-    
+    bindElements()
+        
     
 _ajax('/get_table_data/', initialRender, method='GET')

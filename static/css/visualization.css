@@ -46,6 +46,7 @@
 .table-container {
     outline: 5px solid green;
     margin-top: 4vh;
+    margin-right: 3vw;
 }
 
 table {
@@ -69,6 +70,44 @@ th:last-of-type {
     border-bottom-right-radius: 2vw;
 }
 
+.status-header {
+    position: relative;
+    display: flex;
+    background-color: white;
+    border-radius: 1vw;
+    color: black;
+    text-align: start;
+    padding: 0 1vw;
+}
+
+.status-header p {
+    margin: 0;
+}
+
+.arrow-down {
+    position: absolute;
+    right: 1vw;
+    bottom: 0.4vh;
+    width: 0;
+    height: 0;
+    border-left: 0.4vh solid transparent;
+    border-right: 0.4vh solid transparent;
+    
+    border-top: 0.7vh solid black;
+}
+
+.arrow-up {
+    position: absolute;
+    right: 1vw;
+    top: 0.4vh;
+    width: 0;
+    height: 0;
+    border-left: 0.4vh solid transparent;
+    border-right: 0.4vh solid transparent;
+    
+    border-bottom: 0.7vh solid black;
+}
+
 td {
     border-bottom: 2px solid var(--line);
     height: 10vh;
@@ -84,6 +123,10 @@ td > img {
 tbody td {
     text-align: center;
     line-height: 3vh;
+}
+
+.selected-row {
+    background-color: var(--row-hovered-color);
 }
 
 .foot-container {
@@ -119,3 +162,4 @@ tbody td {
     opacity: 0.5;
     pointer-events: none;
 }
+

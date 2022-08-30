@@ -81,7 +81,7 @@
     right: 0.4vw;
     top: 7vh;
     padding: 2vh 0;
-    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .notifications-tooltip > div {
@@ -209,7 +209,7 @@ tbody td .status > .arrow-up {
     flex-direction: column;
     background-color: white;
     cursor: auto;
-    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     border-radius: 2vw;
     width: 13vw;
     padding: 2vh 0;
@@ -244,7 +244,9 @@ input[type="checkbox"] {
 .foot-container {
     display: flex;
     justify-content: center;
-    margin-top: auto;
+    margin: auto 0;
+    height: 4vh;
+    align-items: center;
 }
 
 .pages-container {
@@ -288,6 +290,7 @@ input[type="checkbox"] {
     padding: 1vh 1vw;
     min-width: 10vw;
     left: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .status-tooltip > div {
@@ -312,7 +315,7 @@ input[type="checkbox"] {
     height: 4vh;
     width: 10vw;
     border-radius: 1vw;
-    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     outline: 2px solid red;
 }
 
@@ -337,7 +340,7 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .mass-status-tooltip {
@@ -353,6 +356,7 @@ input[type="checkbox"] {
     min-width: 10vw;
     bottom: 5vh;
     left: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .mass-status-tooltip > div {

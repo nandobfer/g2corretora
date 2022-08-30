@@ -80,6 +80,18 @@ def new_button():
     session.database.run(sql=sql, commit=True)
     return 'oi'
 
+@app.route('/change_status/', methods=['POST'])
+def change_status():
+    if not eval(request.form['mass']):
+        sql = f'UPDATE cadastros SET status = "{request.form["status"]}" WHERE id = {request.form["id"]}'
+        session.database.run(sql, commit=True)
+    else:
+        for cadastro_id in eval(request.form['ids']):
+            sql = f'UPDATE cadastros SET status = "{request.form["status"]}" WHERE id = {cadastro_id}'
+            session.database.run(sql, commit=True)
+            
+    return 'oi'
+
 
 # end of file
 app.run(debug=True, host="0.0.0.0", port="5001")

@@ -47,12 +47,25 @@ def cleanTable():
 def removeTooltips(ev):
     jQuery('.action-tooltip').remove()
     jQuery('.status-tooltip').remove()
+
     
-def changeStatus(ev):
-    id = ev.target.attrs['id'].split('-')
-    parent_id = id[2]
-    id = int(id[1])
-    jQuery(f'#statustext-{parent_id}').text(status[id])
+def changeStatus(ev, id = None):
+    def onChangeStatus(req):
+        global current_page
+        global pages
+        pages[current_page-1].table[int(cadastro_id)][3] = status[id][1]
+
+    if not id:
+        id = ev.target.attrs['id'].split('-')
+        cadastro_id = id[3]
+        id = int(id[2])
+        _ajax('/change_status/', onChangeStatus, method = 'POST', data = {'mass': False, 'id': cadastro_id, 'status': status[id][1]})
+    else:
+        cadastro_id = int(id.pop(0))
+        id = int(id.pop(0))
+    jQuery(f'#statustext-{cadastro_id}').text(status[id][1])
+
+
     
 def showStatusTooltip(ev):
     global status
@@ -64,12 +77,11 @@ def showStatusTooltip(ev):
     parent.append(container)
     container = jQuery(f'#status-tooltip-{id}')
     for item in status:
-        row = f'<div id="status-row-{item[0]}"><p id="status-rowp-{item[0]}">{item[1]}</p></div>'
+        row = f'<div id="status-row-{item[0]}-{id}"><p id="status-text-{item[0]}-{id}">{item[1]}</p></div>'
         container.append(row)
         row = jQuery(f'#status-row-{item[0]}-{id}')
         row.on('click', changeStatus)
         
-    print(id)
     position_left = -container.width()/3 + parent.width()/3
     container.css('left', position_left)
     
@@ -84,9 +96,28 @@ def closeTooltip(ev):
 def buildMassTooltip():
     global status
     parent = jQuery('.mass-status-tooltip')
+
+    def changeMassStatus(ev):
+        def onStatusChange(req):
+            global current_page
+            global pages
+            pages[current_page-1].table[int(cadastro_id)][3] = status[int(status_id)][1]
+        
+        ids = []
+        status_id = ev.target.attrs['id'].split('-')[3]
+        for item in document.select('input[type="checkbox"]:checked'):
+            cadastro_id = item.attrs['id'].split('-')[1]
+            ids.append(cadastro_id)
+            id = [cadastro_id, status_id]
+            changeStatus(True, id)
+            
+        _ajax('/change_status/', onStatusChange, method='POST', data={'mass': True, 'ids': str(ids), 'status': status[int(status_id)][1]})
+
     for item in status:
-        row = f'<div><p>{item[1]}</p></div>'
+        row = f'<div id="mass-status-row-{item[0]}"><p id="mass-status-text-{item[0]}">{item[1]}</p></div>'
         parent.append(row)
+        row = jQuery(f'#mass-status-row-{item[0]}')
+        row.on('click', changeMassStatus)
         
     parent.toggle()
     jQuery('.mass-action-container').toggle()
@@ -217,7 +248,6 @@ def buildNextPage(ev):
 def buildPreviousPage(ev):
     cleanTable()
     buildTable(pages[current_page-2])
-    print(current_page)
     
 def getStatus(req):
     global status

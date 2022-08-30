@@ -40,15 +40,8 @@
             <img src="/static/images/sino2.svg" alt="sino2">
         </div>
 
-        <div class="id-container">
-            <div class="id-container-coluna1">
-
-                <label for="input-empresa">Empresa</label>
-                <input id="input-empresa" type="text">
-
-                <label for="input-telefone">Telefone</label>
-                <input id="input-telefone" type="text" maxlength="15">
-
+        <div class="idforms">
+            <div class="idforms-coluna1">
                 <div class="radios-container">
                     <h2>Pessoa</h2>
                     <div class="radios-inputs">
@@ -63,51 +56,37 @@
                     </div>
                 </div>
             </div>
-            <div class="id-container-coluna2">
-
-                <label for="input-nome">Representante</label>
-                <input id="input-nome" type="text">
-
-                <label for="input-email">E-mail</label>
-                <input id="input-email" type="email">
-
-                <label class="empresa" id="label-cnpj" for="input-cnpj">CNPJ</label>
-                <input class="empresa" id="input-cnpj" type="text">
-
-                <label class="pessoa" id="label-cpf" for="input-cpf">CPF</label>
-                <input class="pessoa" id="input-cpf" type="text">
-
+            <div class="idforms-coluna2">
+                <form action="javascript:void(0);">
+                    <label for="input-nome">Representante</label>
+                    <input id="input-nome" type="text">
+                </form>
             </div>
         </div>
 
-        <div class="address-container">
-            <h2>Endereço</h2>
-            <div class="address-inputs">
-                <div class="address-inputs-coluna1">
-                    <label for="input-rua">Rua</label>
-                    <input id="input-rua" type="text">
-                </div>
-                <div class="address-inputs-coluna2">
-                    <label for="input-numero">Número</label>
-                    <input id="input-numero" type="text">
-                </div>
-                <div class="address-inputs-coluna3">
-                    <label for="input-bairro">Bairro</label>
-                    <input id="input-bairro" type="text">
-                </div>
-                <div class="address-inputs-coluna4">
-                    <label for="input-cidade">Cidade</label>
-                    <input id="input-cidade" type="text">
-                </div>
-                <div class="address-inputs-coluna5">
-                    <label for="input-estado">Estado</label>
-                    <input id="input-estado" type="text">
-                </div>
-            </div>
-        </div>
+        <form action="javascript:void(0);">
 
-        <div class="contract-container"></div>
 
+            <label class="pessoa" id="label-cpf" for="input-cpf">CPF</label>
+            <input class="pessoa" id="input-cpf" type="text">
+
+            <label class="empresa" id="label-cnpj" for="input-cnpj">CNPJ</label>
+            <input class="empresa" id="input-cnpj" type="text">
+
+            <label class="empresa" id="label-empresa" for="input-empresa">Empresa</label>
+            <input class="empresa" id="input-empresa" type="text">
+
+            <label for="input-email">E-mail</label>
+            <input id="input-email" type="email">
+
+            <label for="input-telefone">Telefone</label>
+            <input id="input-telefone" type="text" maxlength="15">
+
+            <label for="input-cep">CEP</label>
+            <input id="input-cep" type="text" maxlength="9">
+
+            <button type="submit" id="signup-form-button">Cadastrar</button>
+        </form>
         <p id="feedback"></p>
     </div>
 </body>

@@ -2,20 +2,81 @@
     margin: 0.2vw
 }
 
-.container {
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+}
+
+.main-container>form {
     display: flex;
     flex-direction: column;
 }
 
-.container > form {
+.notifications {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.id-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.id-container-coluna1 {
     display: flex;
     flex-direction: column;
+    flex: 50;
+}
+
+.id-container-coluna2 {
+    display: flex;
+    flex-direction: column;
+    flex: 50;
 }
 
 .radios-container {
     display: flex;
+    flex-direction: column;
 }
 
-.empresa {
-    display: none;
+.radios-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.address-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.address-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.address-inputs>div {
+    display: flex;
+    flex-direction: column;
+}
+
+.address-inputs-coluna1 {
+    flex: 35;
+}
+
+.address-inputs-coluna2 {
+    flex: 5;
+}
+
+.address-inputs-coluna3 {
+    flex: 20;
+}
+
+.address-inputs-coluna4 {
+    flex: 20;
+}
+
+.address-inputs-coluna5 {
+    flex: 20;
 }

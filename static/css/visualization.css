@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     flex: 0.8;
-    outline: 5px solid blue;
     height: 97.8vh;
     overflow-y: hidden;
 }
@@ -18,7 +17,6 @@
     align-items: center;
     margin-top: 3vh;
     height: 5vh;
-    outline: 5px solid yellow;;
 
 }
 
@@ -33,7 +31,6 @@
     height: 100%;
     border-radius: 2vw;
     background-color: var(--input-background-color);
-    outline: none;
     border: none;
     padding-left: 3.5vw;
     font-size: 2.5vh;
@@ -94,7 +91,6 @@
 }
 
 .table-container {
-    outline: 5px solid green;
     margin-top: 4vh;
     margin-right: 3vw;
 }
@@ -221,7 +217,6 @@ tbody td .status > .arrow-up {
 .action-tooltip > div {
     margin: 1vh 0;
     cursor: pointer;
-    /* outline: 1px solid red; */
 }
 
 .action-tooltip > hr {
@@ -316,7 +311,6 @@ input[type="checkbox"] {
     width: 10vw;
     border-radius: 1vw;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    outline: 2px solid red;
 }
 
 .mass-action-container > div > .arrows {
@@ -333,7 +327,6 @@ input[type="checkbox"] {
 
 .mass-action-container > div:last-of-type {
     margin: 0 2vw;
-    outline: 2px solid blue;
     border-radius: 50%;
     height: 4vh;
     width: 4vh;

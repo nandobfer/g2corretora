@@ -1,4 +1,5 @@
 from browser import document, ajax, html, bind, window, alert
+from datetime import datetime
 
 jQuery = window.jQuery
 pages = []
@@ -53,9 +54,6 @@ def showStatusTooltip(ev):
     id = ev.target.attrs['id'].split('-')[1]
     parent = jQuery(f'#status-{id}')
     container = f'<div id="status-tooltip-{id}" class="status-tooltip">\
-                    <div><p>Aviso de 60 dias</p></div>\
-                    <div><p>Aviso de 30 dias</p></div>\
-                    <div><p>Aviso de 15 dias</p></div>\
                 </div>'
     parent.append(container)
     container = jQuery(f'#status-tooltip-{id}')
@@ -78,11 +76,6 @@ def closeTooltip(ev):
 def buildMassTooltip():
     global status
     parent = jQuery('.mass-status-tooltip')
-    container = '\
-                    <div><p>Aviso de 60 dias</p></div>\
-                    <div><p>Aviso de 30 dias</p></div>\
-                    <div><p>Aviso de 15 dias</p></div>'
-    parent.append(container)
     for item in status:
         row = f'<div><p>{item[1]}</p></div>'
         parent.append(row)
@@ -142,6 +135,21 @@ def buildTable(page):
             row += f'<td>{info}</td>'
             if item.index(info) == 6:
                 break
+            
+        vencimento = item[6].split('/')
+        vencimento = datetime(int(vencimento[2]), int(vencimento[1]), int(vencimento[0]))
+        agora = datetime.now()
+        prazo = (vencimento-agora).days
+        prazo_texto = None
+        if prazo > 60:
+            prazo_texto = '-'
+        elif prazo <= 60:
+            prazo_texto = '60 dias'
+        if prazo <= 30:
+            prazo_texto = '30 dias'
+        if prazo <= 15:
+            prazo_texto = '15 dias'
+        row += f'<td>{prazo_texto}</td>'
         row += f'<td><div id="action-container-{item[0]}" class="action-container"><img id="action-{item[0]}" src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></div></td></tr>'
         jQuery('tbody').append(row)
         jQuery(f'.status-{item[0]}').on('click', showStatusTooltip)

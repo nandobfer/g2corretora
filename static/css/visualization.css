@@ -239,7 +239,7 @@ input[type="checkbox"] {
 .foot-container {
     display: flex;
     justify-content: center;
-    margin: auto 0;
+    margin-top: auto;
     height: 4vh;
     align-items: center;
 }

@@ -23,7 +23,8 @@ body {
     display: flex;
     width: 99vw;
     font-family: Roboto;
-    height: 97.8vh;
+    height: 100vh;
+    margin: 0;
 
 }
 
@@ -36,7 +37,6 @@ body {
     flex: 0.2;
     display: flex;
     flex-direction: column;
-    outline: 5px solid red;
     align-items: center;
     margin-right: 3vw;
 }
@@ -52,7 +52,6 @@ body {
     color: white;
     font-size: 2.2vh;
     padding: 5vh 0;
-    outline: 5px solid purple;
 
 }
 

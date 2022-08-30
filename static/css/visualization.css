@@ -275,3 +275,21 @@ input[type="checkbox"] {
     pointer-events: none;
 }
 
+.status-tooltip {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--status-container-color);
+    z-index: 5;
+    top: 5vh;
+    border-radius: 2vw;
+    text-align: center;
+    width: fit-content;
+    padding: 1vh 1vw;
+    min-width: 10vw;
+    left: 0;
+}
+
+.status-tooltip > div {
+    margin: 1vh 0;
+}

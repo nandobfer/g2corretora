@@ -3,7 +3,7 @@ from browser import document, ajax, html, bind, window, alert
 jQuery = window.jQuery
 pages = []
 current_page = 1
-
+status = []
 class Page():
     def __init__(self, number, button, table):
         self.number = number
@@ -45,6 +45,28 @@ def cleanTable():
     
 def removeTooltips(ev):
     jQuery('.action-tooltip').remove()
+    jQuery('.status-tooltip').remove()
+    
+def showStatusTooltip(ev):
+    global status
+    removeTooltips(True)
+    id = ev.target.attrs['id'].split('-')[1]
+    parent = jQuery(f'#status-{id}')
+    container = f'<div id="status-tooltip-{id}" class="status-tooltip">\
+                    <div><p>Aviso de 60 dias</p></div>\
+                    <div><p>Aviso de 30 dias</p></div>\
+                    <div><p>Aviso de 15 dias</p></div>\
+                </div>'
+    parent.append(container)
+    container = jQuery(f'#status-tooltip-{id}')
+    for item in status:
+        row = f'<div><p>{item[1]}</p></div>'
+        container.append(row)
+        
+    print(container.position().left, container.position().top)
+    position_left = -container.width()/3 + parent.width()/3
+    container.css('left', position_left)
+    
     
 def showActionTooltip(ev):
     removeTooltips(True)
@@ -86,7 +108,7 @@ def buildTable(page):
                 continue
 
             if item.index(info) == 3:
-                row += f'<td><div class="status"><p>{info}</p><div class="arrow-down"></div><div class="arrow-up"></div></div></td>'
+                row += f'<td><div id="status-{item[0]}" class="status"><p id="statustext-{item[0]}">{info}</p><div class="arrow-down"></div><div class="arrow-up"></div></div></td>'
                 continue
                 
             row += f'<td>{info}</td>'
@@ -94,6 +116,7 @@ def buildTable(page):
                 break
         row += f'<td><div id="action-container-{item[0]}" class="action-container"><img id="action-{item[0]}" src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></div></td></tr>'
         jQuery('tbody').append(row)
+        jQuery(f'#status-{item[0]}').on('click', showStatusTooltip)
         jQuery(f'#action-{item[0]}').on('click', showActionTooltip)
         
     bindCheckboxes()
@@ -144,11 +167,17 @@ def buildPreviousPage(ev):
     buildTable(pages[current_page-2])
     print(current_page)
     
+def getStatus(req):
+    global status
+    data = eval(req.text)
+    status = data
+    
 def initialRender(req):
     data = eval(req.text)
     buildPages(data)
     buildTable(pages[0])
     bindElements()
+    _ajax('/get_added_buttons/', getStatus)
     # jQuery('.notifications-tooltip').hide()
         
     

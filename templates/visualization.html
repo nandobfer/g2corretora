@@ -38,7 +38,16 @@
             <img src="/static/images/lupa.svg" alt="">
             <input type="text" placeholder="Pesquisar por empresa">
             <img src="/static/images/stairs.svg" alt="stairs">
-            <img src="/static/images/sino2.svg" alt="sino2">
+            <div class="notifications-container">
+                <img src="/static/images/sino2.svg" alt="sino2">
+                <div class="notifications-circle">
+                    <p id="notifications-number">2</p>
+                </div>
+                <div class="notifications-tooltip">
+                    <div class="arrow-up"></div>
+                    <p>teste</p>
+                </div>
+            </div>
         </div>
         <div class="table-container">
             <table>
@@ -55,6 +64,7 @@
                         <th>E-mail</th>
                         <th>Telefone</th>
                         <th>Vencimento</th>
+                        <th>Aviso</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -71,8 +81,16 @@
                 </div>
                 <p id="next-page">></p>
             </div>
-            <div class="filter-container">
-
+            <div class="mass-action-container">
+                <div class="mass-status">
+                    <p>Status</p>
+                    <div class="arrow-up arrows"></div>
+                    <div class="arrow-down arrows"></div>
+                    <div class="mass-status-tooltip">
+                        
+                    </div>
+                </div>
+                <div><img src="/static/images/trash.svg" alt="lixeira"></div>
             </div>
 
         </div>

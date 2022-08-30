@@ -48,6 +48,12 @@ def removeTooltips(ev):
     jQuery('.action-tooltip').remove()
     jQuery('.status-tooltip').remove()
     
+def changeStatus(ev):
+    id = ev.target.attrs['id'].split('-')
+    parent_id = id[2]
+    id = int(id[1])
+    jQuery(f'#statustext-{parent_id}').text(status[id])
+    
 def showStatusTooltip(ev):
     global status
     removeTooltips(True)
@@ -58,8 +64,10 @@ def showStatusTooltip(ev):
     parent.append(container)
     container = jQuery(f'#status-tooltip-{id}')
     for item in status:
-        row = f'<div><p>{item[1]}</p></div>'
+        row = f'<div id="status-row-{item[0]}"><p id="status-rowp-{item[0]}">{item[1]}</p></div>'
         container.append(row)
+        row = jQuery(f'#status-row-{item[0]}-{id}')
+        row.on('click', changeStatus)
         
     print(id)
     position_left = -container.width()/3 + parent.width()/3

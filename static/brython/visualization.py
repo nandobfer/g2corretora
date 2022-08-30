@@ -47,6 +47,8 @@ def cleanTable():
 def removeTooltips(ev):
     jQuery('.action-tooltip').remove()
     jQuery('.status-tooltip').remove()
+    jQuery('.status').on('click', showStatusTooltip)
+    jQuery('.action-container').on('click', showActionTooltip)
 
     
 def changeStatus(ev, id = None):
@@ -86,12 +88,7 @@ def showStatusTooltip(ev):
     container.css('left', position_left)
     
     jQuery(f'.status-{id}').off('click')
-    jQuery(f'.status-{id}').on('click', closeTooltip)
-    
-def closeTooltip(ev):
-    id = ev.target.attrs['id'].split('-')[1]
-    removeTooltips(True)
-    jQuery(f'.status-{id}').on('click', showStatusTooltip)
+    jQuery(f'.status-{id}').on('click', removeTooltips)
     
 def buildMassTooltip():
     global status
@@ -122,11 +119,6 @@ def buildMassTooltip():
     parent.toggle()
     jQuery('.mass-action-container').toggle()
     
-def closeActionTooltip(ev):
-    removeTooltips(True)
-    jQuery(ev.target).on('click', showActionTooltip)
-
-    
 def showActionTooltip(ev):
     removeTooltips(True)
     id = ev.target.attrs['id'].split('-')[1]
@@ -154,9 +146,9 @@ def showActionTooltip(ev):
         </div>\
     </div>'
     parent.append(container)
-    jQuery(f'#action-tooltip-{id}').on('click', removeTooltips)
+    # jQuery(f'#action-tooltip-{id}').on('click', removeTooltips)
     jQuery(ev.target).off('click')
-    jQuery(ev.target).on('click', closeActionTooltip)
+    jQuery(ev.target).on('click', removeTooltips)
     
 def buildTable(page):
     global current_page
@@ -192,8 +184,8 @@ def buildTable(page):
         row += f'<td>{prazo_texto}</td>'
         row += f'<td><div id="action-container-{item[0]}" class="action-container"><img id="action-{item[0]}" src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></div></td></tr>'
         jQuery('tbody').append(row)
-        jQuery(f'.status-{item[0]}').on('click', showStatusTooltip)
-        jQuery(f'#action-{item[0]}').on('click', showActionTooltip)
+    jQuery(f'.status').on('click', showStatusTooltip)
+    jQuery(f'.action-container').on('click', showActionTooltip)
         
     bindCheckboxes()
     if current_page == pages[0].number:

@@ -89,6 +89,11 @@ def buildMassTooltip():
         
     parent.toggle()
     
+def closeActionTooltip(ev):
+    removeTooltips(True)
+    jQuery(ev.target).on('click', showActionTooltip)
+
+    
 def showActionTooltip(ev):
     removeTooltips(True)
     id = ev.target.attrs['id'].split('-')[1]
@@ -117,6 +122,8 @@ def showActionTooltip(ev):
     </div>'
     parent.append(container)
     jQuery(f'#action-tooltip-{id}').on('click', removeTooltips)
+    jQuery(ev.target).off('click')
+    jQuery(ev.target).on('click', closeActionTooltip)
     
 def buildTable(page):
     global current_page

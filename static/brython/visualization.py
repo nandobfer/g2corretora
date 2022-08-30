@@ -81,6 +81,7 @@ def buildMassTooltip():
         parent.append(row)
         
     parent.toggle()
+    jQuery('.mass-action-container').toggle()
     
 def closeActionTooltip(ev):
     removeTooltips(True)
@@ -170,17 +171,23 @@ def buildTable(page):
 def checkAllBoxes(ev):
     if ev.target.checked:
         jQuery('input[type="checkbox"]:not("#header-checkbox")').prop('checked', True)
+        jQuery('.mass-action-container').fadeIn()
     else:
         jQuery('input[type="checkbox"]:not("#header-checkbox")').prop('checked', False)
-    jQuery('input[type="checkbox"]:not("#header-checkbox")').change() 
+        jQuery('.mass-action-container').fadeOut()
+    jQuery('input[type="checkbox"]:not("#header-checkbox")').change()
         
 def hoverRow(ev):
     id = ev.target.attrs['id'].split('-')[1]
     row = jQuery(f'#row-{id}')
     if ev.target.checked:
         row.addClass('selected-row')
+        jQuery('.mass-action-container').fadeIn()
     else:
         row.removeClass('selected-row')
+        if not jQuery('input[type="checkbox"]:checked').length:
+            jQuery('.mass-action-container').fadeOut()
+            
         
 def toggleNotifications(ev):
     jQuery('.notifications-tooltip').toggle()

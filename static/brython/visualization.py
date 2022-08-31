@@ -164,7 +164,8 @@ def buildTable(page):
                 row += f'<td><div id="status-{item[0]}" class="status status-{item[0]}"><p id="statustext-{item[0]}">{info}</p><div id="arrowdown-{item[0]}" class="arrow-down"></div><div id="arrowup-{item[0]}" class="arrow-up"></div></div></td>'
                 continue
                 
-            row += f'<td>{info}</td>'
+            row += f'<td><p>{info}</p></td>'
+            
             if item.index(info) == 6:
                 break
             

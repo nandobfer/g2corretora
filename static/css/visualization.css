@@ -165,6 +165,8 @@ td > img {
 tbody td {
     text-align: center;
     line-height: 3vh;
+    text-overflow: ellipsis;
+    max-width: 10vw;
 }
 
 tbody td .status {

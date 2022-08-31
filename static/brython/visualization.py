@@ -254,9 +254,18 @@ def getStatus(req):
     buildMassTooltip()  
     
 def buildNotifications():
-    jQuery('#vencimentos-cadastros-60').text(len(vencimentos_proximos['60']))
-    jQuery('#vencimentos-cadastros-30').text(len(vencimentos_proximos['30']))
-    jQuery('#vencimentos-cadastros-15').text(len(vencimentos_proximos['15']))
+    dias_60 = len(vencimentos_proximos['60'])
+    dias_30 = len(vencimentos_proximos['30'])
+    dias_15 = len(vencimentos_proximos['15'])
+    jQuery('#vencimentos-cadastros-60').text(dias_60)
+    jQuery('#vencimentos-cadastros-30').text(dias_30)
+    jQuery('#vencimentos-cadastros-15').text(dias_15)
+    
+    total = dias_60 + dias_30 + dias_15
+    jQuery('#notifications-number').text(total)
+    
+    if total:
+        jQuery('.notifications-circle').show()
     
 def getVencimentosProximos():
     for page in pages:
@@ -284,6 +293,7 @@ def initialRender(req):
     bindElements()
     _ajax('/get_added_buttons/', getStatus)
     # jQuery('.notifications-tooltip').hide()
+    jQuery('.notifications-circle').hide()
     getVencimentosProximos()
         
     

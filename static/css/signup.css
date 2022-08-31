@@ -62,21 +62,38 @@
 }
 
 .address-inputs-coluna1 {
-    flex: 35;
+    flex: 0.35;
 }
 
 .address-inputs-coluna2 {
-    flex: 5;
+    flex: 0.05;
 }
 
 .address-inputs-coluna3 {
-    flex: 20;
+    flex: 0.2;
 }
 
 .address-inputs-coluna4 {
-    flex: 20;
+    flex: 0.2;
 }
 
 .address-inputs-coluna5 {
-    flex: 20;
+    flex: 0.2;
+}
+
+.contract-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.contract-container-coluna1 {
+    display: flex;
+    flex: 0.5;
+    flex-direction: column;
+}
+
+.contract-container-coluna2 {
+    display: flex;
+    flex: 0.5;
+    flex-direction: column;
 }

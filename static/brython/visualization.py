@@ -269,6 +269,7 @@ def getStatus(req):
     status = data
     buildMassTooltip()  
     buildFilterTooltip()
+    jQuery('.loading-container').fadeToggle()
     
 def buildNotifications():
     dias_60 = len(vencimentos_proximos['60'])
@@ -283,6 +284,9 @@ def buildNotifications():
     
     if total:
         jQuery('.notifications-circle').show()
+        # colocar um browser timer aqui
+        jQuery('.notifications-tooltip').fadeToggle()
+        
     
 def getVencimentosProximos():
     for page in pages:
@@ -368,6 +372,7 @@ def initialRender(req):
     bindElements()
     _ajax('/get_added_buttons/', getStatus)
     jQuery('.notifications-tooltip').hide()
+    jQuery('.filter-tooltip').hide()
     jQuery('.notifications-circle').hide()
     getVencimentosProximos()
         

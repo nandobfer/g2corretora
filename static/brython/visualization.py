@@ -5,6 +5,11 @@ jQuery = window.jQuery
 pages = []
 current_page = 1
 status = []
+vencimentos_proximos = {
+    "60": [],
+    "30": [],
+    "15": []
+}
 class Page():
     def __init__(self, number, button, table):
         self.number = number
@@ -172,7 +177,7 @@ def buildTable(page):
         vencimento = item[6].split('/')
         vencimento = datetime(int(vencimento[2]), int(vencimento[1]), int(vencimento[0]))
         agora = datetime.now()
-        prazo = (vencimento-agora).days
+        prazo = (vencimento-agora).days + 1
         prazo_texto = None
         if prazo > 60:
             prazo_texto = '-'
@@ -248,6 +253,30 @@ def getStatus(req):
     status = data
     buildMassTooltip()  
     
+def buildNotifications():
+    jQuery('#vencimentos-cadastros-60').text(len(vencimentos_proximos['60']))
+    jQuery('#vencimentos-cadastros-30').text(len(vencimentos_proximos['30']))
+    jQuery('#vencimentos-cadastros-15').text(len(vencimentos_proximos['15']))
+    
+def getVencimentosProximos():
+    for page in pages:
+        for cadastro in page.table:
+            vencimento = cadastro[6].split('/')
+            vencimento = datetime(int(vencimento[2]), int(vencimento[1]), int(vencimento[0]))
+            agora = datetime.now()
+            prazo = (vencimento-agora).days + 1
+            print(prazo)
+            if prazo > 60:
+                continue
+            elif prazo > 30:
+                vencimentos_proximos["60"].append(cadastro)
+            elif prazo > 15:
+                vencimentos_proximos["30"].append(cadastro)
+            elif prazo >= 0:
+                vencimentos_proximos["15"].append(cadastro)
+                
+    buildNotifications()
+    
 def initialRender(req):
     data = eval(req.text)
     buildPages(data)
@@ -255,6 +284,7 @@ def initialRender(req):
     bindElements()
     _ajax('/get_added_buttons/', getStatus)
     # jQuery('.notifications-tooltip').hide()
+    getVencimentosProximos()
         
     
 _ajax('/get_table_data/', initialRender, method='GET')

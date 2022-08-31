@@ -50,6 +50,32 @@
     position: relative;
 }
 
+.filter-container {
+    position: relative;
+}
+
+.filter-tooltip {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    border-radius: 1vw;
+    top: 6vh;
+    right: 2vw;
+    height: fit-content;
+    padding: 2vh 1vw;
+}
+
+.filter-tooltip > div {
+    margin: 0.5vh 0;
+    cursor: pointer;
+}
+
+.selected-filter {
+    outline: 2px solid blue;
+}
+
 .notifications-circle {
     position: absolute;
     display: flex;

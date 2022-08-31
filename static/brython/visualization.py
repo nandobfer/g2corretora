@@ -5,6 +5,13 @@ jQuery = window.jQuery
 pages = []
 current_page = 1
 status = []
+cadastros = None
+filtered = []
+vencimentos_proximos = {
+    "60": [],
+    "30": [],
+    "15": []
+}
 class Page():
     def __init__(self, number, button, table):
         self.number = number
@@ -25,7 +32,13 @@ def _ajax(url, onComplete, method='GET', data={}):
     req.set_header('content-type', 'application/x-www-form-urlencoded')
     req.send(data)
     
+def cleanPages():
+    jQuery('.pages-buttons').remove()
+    cleanTable()
+
 def buildPages(data):
+    global pages
+    pages = []
     pages_number = (len(data) // 7) + 1
     for count in range(1, pages_number+1):
         table = []
@@ -39,6 +52,10 @@ def buildPages(data):
         page = Page(count, button, table)
         pages.append(page)
         jQuery('.pages').append(page.button)
+        jQuery('#next-page').on('click', buildNextPage)
+        jQuery('#previous-page').on('click', buildPreviousPage)
+        
+        
 
 def cleanTable():
     jQuery('.active-page-button').removeClass('active-page-button')
@@ -172,19 +189,25 @@ def buildTable(page):
         vencimento = item[6].split('/')
         vencimento = datetime(int(vencimento[2]), int(vencimento[1]), int(vencimento[0]))
         agora = datetime.now()
-        prazo = (vencimento-agora).days
-        prazo_texto = None
+        prazo = (vencimento-agora).days + 1
+        prazo_texto = str(prazo)
+        color = None
         if prazo > 60:
             prazo_texto = '-'
-        elif prazo <= 60:
-            prazo_texto = '60 dias'
-        if prazo <= 30:
-            prazo_texto = '30 dias'
-        if prazo <= 15:
-            prazo_texto = '15 dias'
-        row += f'<td>{prazo_texto}</td>'
+        else:
+            if prazo <= 30:
+                color = 'var(--yellow)'
+            if prazo <= 15:
+                color = 'var(--red)'
+            if prazo == 1:
+                prazo_texto += ' dia'
+            else:
+                prazo_texto += ' dias'
+        row += f'<td id="prazo-{item[0]}">{prazo_texto}</td>'
         row += f'<td><div id="action-container-{item[0]}" class="action-container"><img id="action-{item[0]}" src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></div></td></tr>'
         jQuery('tbody').append(row)
+        if color:
+            jQuery(f'#prazo-{item[0]}').css('color', color)
     jQuery(f'.status').on('click', showStatusTooltip)
     jQuery(f'.action-container').on('click', showActionTooltip)
         
@@ -229,8 +252,6 @@ def bindCheckboxes():
     jQuery('#header-checkbox').on('change', checkAllBoxes)
         
 def bindElements():
-    jQuery('#next-page').on('click', buildNextPage)
-    jQuery('#previous-page').on('click', buildPreviousPage)
     jQuery('.notifications-container').on('click', toggleNotifications)
     jQuery('.mass-status').on('click', jQuery('.mass-status-tooltip').toggle)
         
@@ -247,14 +268,108 @@ def getStatus(req):
     data = eval(req.text)
     status = data
     buildMassTooltip()  
+    buildFilterTooltip()
+    
+def buildNotifications():
+    dias_60 = len(vencimentos_proximos['60'])
+    dias_30 = len(vencimentos_proximos['30'])
+    dias_15 = len(vencimentos_proximos['15'])
+    jQuery('#vencimentos-cadastros-60').text(dias_60)
+    jQuery('#vencimentos-cadastros-30').text(dias_30)
+    jQuery('#vencimentos-cadastros-15').text(dias_15)
+    
+    total = dias_60 + dias_30 + dias_15
+    jQuery('#notifications-number').text(total)
+    
+    if total:
+        jQuery('.notifications-circle').show()
+    
+def getVencimentosProximos():
+    for page in pages:
+        for cadastro in page.table:
+            vencimento = cadastro[6].split('/')
+            vencimento = datetime(int(vencimento[2]), int(vencimento[1]), int(vencimento[0]))
+            agora = datetime.now()
+            prazo = (vencimento-agora).days + 1
+            if prazo > 60:
+                continue
+            elif prazo > 30:
+                vencimentos_proximos["60"].append(cadastro)
+            elif prazo > 15:
+                vencimentos_proximos["30"].append(cadastro)
+            elif prazo >= 0:
+                vencimentos_proximos["15"].append(cadastro)
+                
+    buildNotifications()
+    
+def filter(status):
+    global filtered
+    global cadastros
+    for cadastro in cadastros:
+        if cadastro[3] == status:
+            filtered.append(cadastro)
+        
+    return filtered
+
+def unfilter(status):
+    global filtered
+    global cadastros
+    for cadastro in cadastros:
+        if cadastro[3] == status:
+            filtered.remove(cadastro)
+        
+    return filtered
+    
+def doFilter(ev):
+    global filtered
+    global cadastros
+    id = ev.target.attrs['id'].split('-')[2]
+    container = jQuery(f'#filter-row-{id}')
+    if container.hasClass('selected-filter'):
+        container.removeClass('selected-filter')
+        cleanPages()
+        
+        data = unfilter(status[int(id)][1]).copy()
+        if data:
+            buildPages(data)
+        else:
+            buildPages(cadastros)
+            filtered = []
+        buildTable(pages[0])
+    else:
+        container.addClass('selected-filter')
+        cleanPages()
+        
+        data = filter(status[int(id)][1]).copy()
+        buildPages(data)
+        buildTable(pages[0])
+    
+def buildFilterTooltip():
+    global status
+    container = jQuery('.filter-tooltip')
+    for item in status:
+        row = f'<div id="filter-row-{item[0]}"><p id="filter-text-{item[0]}">{item[1]}</p></div>'
+        container.append(row)
+        row = jQuery(f'#filter-row-{item[0]}')
+        
+        row.on('click', doFilter)
+        # row.on('click', changeStatus)
+        
+    
+    jQuery('.filter-tooltip').off('click', container.toggle)
+    jQuery('.filter-container').on('click', container.toggle)
     
 def initialRender(req):
+    global cadastros
     data = eval(req.text)
+    cadastros = data.copy()
     buildPages(data)
     buildTable(pages[0])
     bindElements()
     _ajax('/get_added_buttons/', getStatus)
-    # jQuery('.notifications-tooltip').hide()
+    jQuery('.notifications-tooltip').hide()
+    jQuery('.notifications-circle').hide()
+    getVencimentosProximos()
         
     
 _ajax('/get_table_data/', initialRender, method='GET')

@@ -41,15 +41,32 @@
         <div class="search-container">
             <img src="/static/images/lupa.svg" alt="">
             <input type="text" placeholder="Pesquisar por empresa">
-            <img src="/static/images/stairs.svg" alt="stairs">
+            <div class="filter-container">
+                <img src="/static/images/stairs.svg" alt="stairs">
+                <div class="filter-tooltip">
+                </div>
+            </div>
             <div class="notifications-container">
                 <img src="/static/images/sino2.svg" alt="sino2">
                 <div class="notifications-circle">
-                    <p id="notifications-number">2</p>
+                    <p id="notifications-number">0</p>
                 </div>
                 <div class="notifications-tooltip">
                     <div class="arrow-up"></div>
-                    <p>teste</p>
+                    <div>
+                        <img src="/static/images/warning-black.svg" alt="">
+                        <p>Faltam <span class="vencimentos-dias vencimentos-60" id="vencimentos-dias-60">60 dias</span> para o vencimento de <span class="vencimentos-cadastros vencimentos-60" id="vencimentos-cadastros-60">0</span> cadastros</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <img src="/static/images/warning-yellow.svg" alt="">
+                        <p>Faltam <span class="vencimentos-dias vencimentos-30" id="vencimentos-dias-30">30 dias</span> para o vencimento de <span class="vencimentos-cadastros vencimentos-30" id="vencimentos-cadastros-30">0</span> cadastros</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <img src="/static/images/warning-red.svg" alt="">
+                        <p>Faltam <span class="vencimentos-dias vencimentos-15" id="vencimentos-dias-15">15 dias</span> para o vencimento de <span class="vencimentos-cadastros vencimentos-15" id="vencimentos-cadastros-15">0</span> cadastros</p>
+                    </div>
                 </div>
             </div>
         </div>

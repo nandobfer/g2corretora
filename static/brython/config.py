@@ -50,7 +50,7 @@ def add_button(req):
         coluna = jquery('.current-column')
 
         button = f'<button class="added-button">{item[1]}</button>'
-        coluna.prepend(button)
+        coluna.append(button)
 
         if jquery('.current-column > button').length == 1:
             change_plusbutton()

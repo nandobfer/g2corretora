@@ -24,12 +24,16 @@
                 <img src="/static/images/sino.svg" alt="sino">
                 <p>Notificações</p>
             </div>
+            <div onclick="window.location.href='/cadastro/'">
+                <img src="/static/images/add_user.svg" alt="sino">
+                <p>Cadastrar cliente</p>
+            </div>
             <hr>
             <div id="config-button" onclick="window.location.href='/config/'">
                 <img src="/static/images/settings.svg" alt="sino">
                 <p>Configurações</p>
             </div>
-            <div>
+            <div onclick="window.location.href='/'">
                 <img src="/static/images/exit.svg" alt="sino">
                 <p>Sair</p>
             </div>
@@ -44,19 +48,19 @@
             <div class="id-container-coluna1">
 
                 <label for="input-empresa">Empresa</label>
-                <input id="input-empresa" type="text">
+                <input id="input-empresa" type="text" placeholder="Empresa">
 
                 <label for="input-telefone">Telefone</label>
-                <input id="input-telefone" type="text" maxlength="15">
+                <input id="input-telefone" type="text" maxlength="15" placeholder="Telefone">
 
                 <div class="radios-container">
                     <h2>Pessoa</h2>
                     <div class="radios-inputs">
-                        <div>
+                        <div class="radios-inputs-coluna1">
                             <input class="radios" type="radio" id="radio-cpf" value="cpf" name="person">
                             <label for="radio-cpf">Física</label>
                         </div>
-                        <div>
+                        <div class="radios-inputs-coluna2">
                             <input class="radios" type="radio" id="radio-cnpj" value="cnpj" name="person">
                             <label for="radio-cnpj">Jurídica</label>
                         </div>
@@ -66,16 +70,16 @@
             <div class="id-container-coluna2">
 
                 <label for="input-nome">Representante</label>
-                <input id="input-nome" type="text">
+                <input id="input-nome" type="text" placeholder="Representante">
 
                 <label for="input-email">E-mail</label>
-                <input id="input-email" type="email">
+                <input id="input-email" type="email" placeholder="E-mail">
 
                 <label class="empresa" id="label-cnpj" for="input-cnpj">CNPJ</label>
-                <input class="empresa" id="input-cnpj" type="text">
+                <input class="empresa" id="input-cnpj" type="text" placeholder="CNPJ">
 
                 <label class="pessoa" id="label-cpf" for="input-cpf">CPF</label>
-                <input class="pessoa" id="input-cpf" type="text">
+                <input class="pessoa" id="input-cpf" type="text" placeholder="CPF">
 
             </div>
         </div>
@@ -85,37 +89,48 @@
             <div class="address-inputs">
                 <div class="address-inputs-coluna1">
                     <label for="input-rua">Rua</label>
-                    <input id="input-rua" type="text">
+                    <input id="input-rua" type="text" placeholder="Rua">
                 </div>
                 <div class="address-inputs-coluna2">
                     <label for="input-numero">Número</label>
-                    <input id="input-numero" type="text">
+                    <input id="input-numero" type="text" placeholder="Número">
                 </div>
                 <div class="address-inputs-coluna3">
                     <label for="input-bairro">Bairro</label>
-                    <input id="input-bairro" type="text">
+                    <input id="input-bairro" type="text" placeholder="Bairro">
                 </div>
                 <div class="address-inputs-coluna4">
                     <label for="input-cidade">Cidade</label>
-                    <input id="input-cidade" type="text">
+                    <input id="input-cidade" type="text" placeholder="Cidade">
                 </div>
                 <div class="address-inputs-coluna5">
                     <label for="input-estado">Estado</label>
-                    <input id="input-estado" type="text">
+                    <input id="input-estado" type="text" placeholder="Estado">
                 </div>
             </div>
         </div>
 
         <div class="contract-container">
             <div class="contract-container-coluna1">
-                <p>oi</p>
+                <label for="input-contract-type">Tipo do Contrato</label>
+                <input id="input-contract-type" type="text" placeholder="Tipo do Contrato">
+
+                <label for="input-contract-validity">Contrato Vigente até</label>
+                <input id="input-contract-validity" type="date">
             </div>
             <div class="contract-container-coluna2">
-                <p>oi</p>
+                <label for="input-contract-value">Valor do Contrato</label>
+                <input id="input-contract-value" type="text" placeholder="Valor do Contrato">
+
+                <label for="input-url">URL (Opcional)</label>
+                <input id="input-url" type="url" placeholder="URL">
             </div>
         </div>
 
-        <p id="feedback"></p>
+        <div class="buttons-container">
+            <button class="cancel-button">Cancelar</button>
+            <button class="add-button">Adicionar</button>
+        </div>
     </div>
 </body>
 <footer>

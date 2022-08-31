@@ -1,11 +1,23 @@
-* {
-    margin: 0.2vw
-}
-
 .main-container {
     display: flex;
+    flex: 0.8;
     flex-direction: column;
-    width: 70vw;
+    padding: 5vw 5vw 0 0;
+}
+
+.main-container * {
+    font-size: large;
+    font-weight: bold;
+    margin: 0.25vw;
+}
+
+.main-container input:not(.radios) {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0.2, 0.2, 0.2, 0.2);
+    font-size: small;
+    height: 4vh;
+    padding-left: 1vw;
 }
 
 .main-container>form {
@@ -27,13 +39,14 @@
 .id-container-coluna1 {
     display: flex;
     flex-direction: column;
-    flex: 50;
+    flex: 0.5;
+    margin-right: 1.5vw;
 }
 
 .id-container-coluna2 {
     display: flex;
     flex-direction: column;
-    flex: 50;
+    flex: 0.5;
 }
 
 .radios-container {
@@ -42,13 +55,25 @@
 }
 
 .radios-inputs {
+    color: #757575;
     display: flex;
     flex-direction: row;
+    font-size: small;
+    text-align: center;
+}
+
+.radios-inputs-coluna1 {
+    margin-right: 6vw;
 }
 
 .address-container {
+    align-items: space-evenly;
     display: flex;
     flex-direction: column;
+}
+
+.address-container>h2 {
+    margin-left: 0.65vw;
 }
 
 .address-inputs {
@@ -59,14 +84,16 @@
 .address-inputs>div {
     display: flex;
     flex-direction: column;
+    font-size: small;
+    font-weight: 100;
 }
 
 .address-inputs-coluna1 {
-    flex: 0.35;
+    flex: 0.3;
 }
 
 .address-inputs-coluna2 {
-    flex: 0.05;
+    flex: 0.1;
 }
 
 .address-inputs-coluna3 {
@@ -90,10 +117,34 @@
     display: flex;
     flex: 0.5;
     flex-direction: column;
+    margin-right: 1.5vw;
 }
 
 .contract-container-coluna2 {
     display: flex;
     flex: 0.5;
     flex-direction: column;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.buttons-container button {
+    border: none;
+    border-radius: 5px;
+    font-size: small;
+    padding: 10px 40px;
+}
+
+.cancel-button {
+    background-color: #ececec;
+    color: #00000091;
+}
+
+.add-button {
+    background-color: #7ECC75;
+    color: white
 }

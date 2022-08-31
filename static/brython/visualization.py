@@ -179,17 +179,22 @@ def buildTable(page):
         agora = datetime.now()
         prazo = (vencimento-agora).days + 1
         prazo_texto = None
+        color = None
         if prazo > 60:
             prazo_texto = '-'
         elif prazo <= 60:
             prazo_texto = '60 dias'
         if prazo <= 30:
             prazo_texto = '30 dias'
+            color = 'var(--yellow)'
         if prazo <= 15:
             prazo_texto = '15 dias'
-        row += f'<td>{prazo_texto}</td>'
+            color = 'var(--red)'
+        row += f'<td id="prazo-{item[0]}">{prazo_texto}</td>'
         row += f'<td><div id="action-container-{item[0]}" class="action-container"><img id="action-{item[0]}" src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></div></td></tr>'
         jQuery('tbody').append(row)
+        if color:
+            jQuery(f'#prazo-{item[0]}').css('color', color)
     jQuery(f'.status').on('click', showStatusTooltip)
     jQuery(f'.action-container').on('click', showActionTooltip)
         

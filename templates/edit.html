@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/sidebar.css">
-    <link rel="stylesheet" href="/static/css/signup.css">
+    <link rel="stylesheet" href="/static/css/edit.css">
     <script type="text/javascript" src="/static/brython/brython.js"></script>
     <script type="text/javascript" src="/static/brython/brython_stdlib.js"></script>
-    <title>G2 Corretora - Cadastro</title>
+    <title>G2 Corretora - Edição</title>
 </head>
 
 <body onload="brython({cache:true})">
@@ -39,9 +39,39 @@
             </div>
         </div>
     </div>
+
     <div class="main-container">
         <div class="notifications">
             <img src="/static/images/sino2.svg" alt="sino2">
+        </div>
+
+        <div class="data-container">
+            <div class="data-container-coluna1">
+                <h2>Empresa</h2>
+                <p>At varius vel pharetra</p>
+                <h2>Representante</h2>
+                <p>Velit laoreet id</p>
+                <h2>Email</h2>
+                <p>velitlaoreetid@gmail.com</p>
+            </div>
+            <div class="data-container-coluna2">
+                <h2>Pessoa</h2>
+                <p>Jurídica</p>
+                <h2>CPF/CNPJ</h2>
+                <p>00.344.716/0001-06</p>
+                <h2>Telefone</h2>
+                <p>+55 41 9 9999-9999</p>
+                <h2>Endereço</h2>
+                <p>Nunc id cursus metus, 135 - Velit - ES</p>
+            </div>
+            <div class="data-container-coluna3">
+                <h2>Tipo do Contrato</h2>
+                <p>Aeronáutico</p>
+                <h2>Valor do Contrato</h2>
+                <p>R$9.999.999,99</p>
+                <h2>Contrato Vigente até</h2>
+                <p>01/08/2024</p>
+            </div>
         </div>
 
         <div class="id-container">
@@ -110,33 +140,9 @@
             </div>
         </div>
 
-        <div class="contract-container">
-            <div class="contract-container-coluna1">
-                <label for="input-contract-type">Tipo do Contrato</label>
-                <input id="input-contract-type" type="text" placeholder="Tipo do Contrato">
 
-                <label for="input-contract-validity">Contrato Vigente até</label>
-                <input id="input-contract-validity" type="date">
-            </div>
-            <div class="contract-container-coluna2">
-                <label for="input-contract-value">Valor do Contrato</label>
-                <input id="input-contract-value" type="text" placeholder="Valor do Contrato">
-
-                <label for="input-url">URL (Opcional)</label>
-                <input id="input-url" type="url" placeholder="URL">
-            </div>
-        </div>
-
-        <div class="buttons-container">
-            <button class="cancel-button">Cancelar</button>
-            <button class="add-button">Adicionar</button>
-        </div>
     </div>
+
 </body>
-<footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="/static/javascript/jquery.mask.js"></script>
-    <script type="text/python" src="/static/brython/signup.py"></script>
-</footer>
 
 </html>

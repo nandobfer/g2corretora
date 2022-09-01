@@ -153,15 +153,12 @@
     flex-direction: column;
 }
 
-.buttons-container * {
-    margin: 0.25vw;
-}
-
 .buttons-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     margin-top: 3vh;
+    margin-right: 0.5vw;
 }
 
 .buttons-container button {
@@ -169,6 +166,7 @@
     border-radius: 5px;
     font-size: small;
     padding: 10px 40px;
+    width: 10vw;
 }
 
 .cancel-button {
@@ -181,4 +179,5 @@
     background-color: #7ECC75;
     color: white;
     cursor: pointer;
+    margin-left: 1.5vw;
 }

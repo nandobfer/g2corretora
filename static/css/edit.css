@@ -49,6 +49,28 @@
     flex-direction: column;
 }
 
+.round-buttons-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.contract-validity {
+    display: flex;
+    flex-direction: row;
+}
+
+.update-button {
+    border: none;
+    border-radius: 3px;
+    font-size: small;
+    background-color: #7ECC75;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5vw;
+    height: 3vh;
+    width: 5vw;
+}
+
 h2 {
     font-size: large;
     font-weight: bolder;
@@ -153,4 +175,39 @@ p {
 .address-inputs-coluna5 {
     flex: 0.2;
     margin: 0.25vw 0 0.25vw 0.25vw;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 3vh;
+}
+
+.buttons-container button {
+    border: none;
+    border-radius: 5px;
+    font-size: small;
+    padding: 10px 40px;
+    width: 12vw;
+}
+
+.delete-button {
+    background-color: #ececec;
+    color: #00000091;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #DDB06F;
+    color: white;
+    cursor: pointer;
+    margin-left: 1.5vw;
+}
+
+.save-button {
+    background-color: #7ECC75;
+    color: white;
+    cursor: pointer;
+    margin-left: 1.5vw;
 }

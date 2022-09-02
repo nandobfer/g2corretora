@@ -65,7 +65,9 @@ def cleanTable():
 def removeTooltips(ev):
     jQuery('.action-tooltip').remove()
     jQuery('.status-tooltip').remove()
+    jQuery('.status').off('click')
     jQuery('.status').on('click', showStatusTooltip)
+    jQuery('.action-container').off('click')
     jQuery('.action-container').on('click', showActionTooltip)
 
     
@@ -165,8 +167,8 @@ def showActionTooltip(ev):
     </div>'
     parent.append(container)
     # jQuery(f'#action-tooltip-{id}').on('click', removeTooltips)
-    jQuery(ev.target).off('click')
-    jQuery(ev.target).on('click', removeTooltips)
+    jQuery(parent).off('click')
+    jQuery(parent).on('click', removeTooltips)
     
 def buildTable(page):
     global current_page

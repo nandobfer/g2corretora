@@ -249,7 +249,7 @@ tbody td {
     line-height: 3vh;
     white-space: nowrap; 
     overflow: hidden;
-    text-overflow: ;
+    text-overflow: ellipsis;
     max-width: 8vw;
 }
 

@@ -6,6 +6,7 @@ pages = []
 current_page = 1
 status = []
 cadastros = None
+original_cadastros = None
 filtered = []
 vencimentos_proximos = {
     "60": [],
@@ -356,6 +357,7 @@ def doFilter(ev):
         else:
             buildPages(cadastros)
             filtered = []
+            cadastros = original_cadastros.copy()
         buildTable(pages[0])
     else:
         container.addClass('selected-filter')
@@ -382,8 +384,10 @@ def buildFilterTooltip():
     
 def initialRender(req):
     global cadastros
+    global original_cadastros
     data = eval(req.text)
     cadastros = data.copy()
+    original_cadastros = data.copy()
     buildPages(data)
     buildTable(pages[0])
     bindElements()

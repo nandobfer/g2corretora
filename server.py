@@ -143,4 +143,4 @@ def change_status():
 
 
 # end of file
-app.run(debug=True, host="0.0.0.0", port="5002")
+app.run(debug=True, host="0.0.0.0", port="5002", ssl_context="adhoc")

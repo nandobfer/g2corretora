@@ -80,6 +80,7 @@ def create_button(req):
     form.remove()
     jquery('.current-column').append(plusbutton)
     plusbutton.on('click', new_status)
+    window.location.href = '/config/'
 
 
 def new_status(ev):

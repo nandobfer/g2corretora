@@ -12,6 +12,7 @@ vencimentos_proximos = {
     "30": [],
     "15": []
 }
+vencidos = []
 class Page():
     def __init__(self, number, button, table):
         self.number = number
@@ -181,13 +182,16 @@ def buildTable(page):
                 row += f'<td><div id="status-{item[0]}" class="status status-{item[0]}"><p id="statustext-{item[0]}">{info}</p><div id="arrowdown-{item[0]}" class="arrow-down"></div><div id="arrowup-{item[0]}" class="arrow-up"></div></div></td>'
                 continue
                 
+            if item.index(info) == 6:
+                date = item[6].split('-')
+                row += f'<td><p>{date[2]}/{date[1]}/{date[0]}</p></td>'
+                break
+
             row += f'<td><p>{info}</p></td>'
             
-            if item.index(info) == 6:
-                break
             
-        vencimento = item[6].split('/')
-        vencimento = datetime(int(vencimento[2]), int(vencimento[1]), int(vencimento[0]))
+        vencimento = item[6].split('-')
+        vencimento = datetime(int(vencimento[0]), int(vencimento[1]), int(vencimento[2]))
         agora = datetime.now()
         prazo = (vencimento-agora).days + 1
         prazo_texto = str(prazo)
@@ -203,6 +207,10 @@ def buildTable(page):
                 prazo_texto += ' dia'
             else:
                 prazo_texto += ' dias'
+                
+            if prazo < 0:
+                prazo_texto = 'Vencido'
+
         row += f'<td id="prazo-{item[0]}">{prazo_texto}</td>'
         row += f'<td><div id="action-container-{item[0]}" class="action-container"><img id="action-{item[0]}" src="/static/images/seta-roxa.svg" alt="seta-roxa"></img></div></td></tr>'
         jQuery('tbody').append(row)
@@ -272,14 +280,17 @@ def getStatus(req):
     jQuery('.loading-container').fadeToggle()
     
 def buildNotifications():
+    global vencidos
     dias_60 = len(vencimentos_proximos['60'])
     dias_30 = len(vencimentos_proximos['30'])
     dias_15 = len(vencimentos_proximos['15'])
+    vencidos_dias = len(vencidos)
     jQuery('#vencimentos-cadastros-60').text(dias_60)
     jQuery('#vencimentos-cadastros-30').text(dias_30)
     jQuery('#vencimentos-cadastros-15').text(dias_15)
+    jQuery('#vencidos-dias').text(vencidos_dias)
     
-    total = dias_60 + dias_30 + dias_15
+    total = dias_60 + dias_30 + dias_15 + vencidos_dias
     jQuery('#notifications-number').text(total)
     
     if total:
@@ -291,8 +302,8 @@ def buildNotifications():
 def getVencimentosProximos():
     for page in pages:
         for cadastro in page.table:
-            vencimento = cadastro[6].split('/')
-            vencimento = datetime(int(vencimento[2]), int(vencimento[1]), int(vencimento[0]))
+            vencimento = cadastro[6].split('-')
+            vencimento = datetime(int(vencimento[0]), int(vencimento[1]), int(vencimento[2]))
             agora = datetime.now()
             prazo = (vencimento-agora).days + 1
             if prazo > 60:
@@ -303,6 +314,8 @@ def getVencimentosProximos():
                 vencimentos_proximos["30"].append(cadastro)
             elif prazo >= 0:
                 vencimentos_proximos["15"].append(cadastro)
+            elif prazo < 0:
+                vencidos.append(cadastro)
                 
     buildNotifications()
     

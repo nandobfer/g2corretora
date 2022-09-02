@@ -36,7 +36,7 @@
 .search-container > img:first-of-type {
     position: absolute;
     left: -1vw;
-    height: 70%;
+    height: 4vh;
 }
 
 .search-container > input {
@@ -135,6 +135,13 @@
     width: 100%;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.cadastros-vencidos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 4vh;
 }
 
 .notifications-tooltip > div:not(.arrow-up) > img {
@@ -236,8 +243,10 @@ td > img {
 tbody td {
     text-align: center;
     line-height: 3vh;
-    text-overflow: ellipsis;
-    max-width: 10vw;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ;
+    max-width: 8vw;
 }
 
 tbody td .status {

@@ -119,3 +119,77 @@ h1 {
     margin-top: 4vh;
     margin-bottom: 0.75vh;
 }
+
+.sliders-area {
+    display: flex;
+    flex-direction: column;
+    margin: 3vh 0;
+
+}
+
+.sliders-area>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1.5vh 0;
+}
+
+.sliders-area p {
+    margin-left: 1vw;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 4vw;
+    height: 3vh;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    border-radius: 0.5vw;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ececec;
+    -webkit-transition: .4s;
+    transition: .4s;
+    outline: 1px solid #757575;
+}
+
+.slider:before {
+    border-radius: 0.5vw;
+    position: absolute;
+    position: absolute;
+    content: "";
+    height: 3vh;
+    width: 2vw;
+    background-color: #2A205B;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #403380;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #403380;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(2vw);
+    -ms-transform: translateX(2vw);
+    transform: translateX(2vw);
+}

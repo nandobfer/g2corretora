@@ -269,6 +269,7 @@ def bindCheckboxes():
 def bindElements():
     jQuery('.notifications-container').on('click', toggleNotifications)
     jQuery('.mass-status').on('click', jQuery('.mass-status-tooltip').toggle)
+    jQuery('#search-input').on('keypress', searchHandler)
         
 def buildNextPage(ev):
     cleanTable()
@@ -284,6 +285,8 @@ def getStatus(req):
     status = data
     buildMassTooltip()  
     buildFilterTooltip()
+    jQuery('#notifications-sidebar-button').on('click', filterTableByNotifications)
+    jQuery('#inbox-sidebar-button').on('click', unfilterAll)
     jQuery('.loading-container').fadeToggle()
     
 def buildNotifications():
@@ -325,6 +328,53 @@ def getVencimentosProximos():
                 vencidos.append(cadastro)
                 
     buildNotifications()
+    
+def filterbySearch(value):
+    global cadastros
+    data = []
+    for cadastro in cadastros:
+        for item in cadastro:
+            if type(item) == str:
+                if value.lower() in item.lower():
+                    if not cadastro in data:
+                        data.append(cadastro)
+                
+        
+    cleanPages()
+        
+    data.reverse()
+    buildPages(data)
+    buildTable(pages[0])
+    
+def filterTableByNotifications(ev):
+    global cadastros
+    data = []
+    for item in vencimentos_proximos:
+        print(vencimentos_proximos[item])
+        for cadastro in cadastros:
+            if cadastro in vencimentos_proximos[item]:
+                data.append(cadastro)
+                
+    for cadastro in cadastros:
+        if cadastro in vencidos:
+            data.append(cadastro)
+        
+    cleanPages()
+        
+    data.reverse()
+    buildPages(data)
+    buildTable(pages[0])
+    
+def unfilterAll(ev):
+    global filtered
+    cleanPages()
+        
+    filtered = []
+    cadastros = original_cadastros.copy()
+    buildPages(cadastros)
+    buildTable(pages[0])
+    
+    jQuery('.selected-filter').removeClass('selected-filter')
     
 def filter(status):
     global filtered
@@ -384,6 +434,12 @@ def buildFilterTooltip():
     jQuery('.filter-tooltip').off('click', container.toggle)
     jQuery('.filter-container').on('click', container.toggle)
     
+def searchHandler(ev):
+    keycode = ev.which
+    if keycode == 13:
+        value = jQuery('#search-input').val()
+        filterbySearch(value)
+        
 def initialRender(req):
     global cadastros
     global original_cadastros

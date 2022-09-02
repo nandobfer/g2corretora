@@ -23,6 +23,12 @@ def config():
     return render_template('config.html')
 
 
+@app.route('/edicao/', methods=['GET'])
+def edit():
+
+    return render_template('edit.html')
+
+
 @app.route('/tabela/', methods=['GET'])
 def tabela():
 
@@ -80,6 +86,7 @@ def new_button():
     session.database.run(sql=sql, commit=True)
     return 'oi'
 
+
 @app.route('/change_status/', methods=['POST'])
 def change_status():
     if not eval(request.form['mass']):
@@ -89,7 +96,7 @@ def change_status():
         for cadastro_id in eval(request.form['ids']):
             sql = f'UPDATE cadastros SET status = "{request.form["status"]}" WHERE id = {cadastro_id}'
             session.database.run(sql, commit=True)
-            
+
     return 'oi'
 
 

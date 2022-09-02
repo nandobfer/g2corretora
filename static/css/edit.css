@@ -3,12 +3,7 @@
     flex: 0.8;
     flex-direction: column;
     font-family: Roboto;
-    padding: 5vw 5vw 0 0;
-}
-
-.main-container * {
-    font-size: large;
-    font-weight: bold;
+    padding: 2vw 5vw 0 0;
 }
 
 .main-container input:not(.radios) {
@@ -32,14 +27,72 @@
     justify-content: flex-end;
 }
 
-.id-container {
+.data-container {
     display: flex;
     flex-direction: row;
-    margin-bottom: 1vh;
+    justify-content: space-between;
+    width: 60vw;
+}
+
+.data-container-coluna1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-container-coluna2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-container-coluna3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.round-buttons-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.contract-validity {
+    display: flex;
+    flex-direction: row;
+}
+
+.update-button {
+    border: none;
+    border-radius: 3px;
+    font-size: small;
+    background-color: #7ECC75;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5vw;
+    height: 3vh;
+    width: 5vw;
+}
+
+h2 {
+    font-size: large;
+    font-weight: bolder;
+    margin: 0.4vh 0;
+
+}
+
+p {
+    font-size: 80%;
+    font-weight: normal;
+    margin: 0.3vh 0 1.5vh 0;
 }
 
 .id-container * {
-    margin: 0.25vw;
+    font-size: large;
+    font-weight: bold;
+    margin: 0.25vw 0;
+}
+
+.id-container {
+    display: flex;
+    flex-direction: row;
 }
 
 .id-container-coluna1 {
@@ -68,20 +121,13 @@
 }
 
 .radios-inputs-coluna1 {
-    margin-right: 6vw;
+    margin-right: 8vw;
 }
 
 .address-container {
     align-items: space-evenly;
     display: flex;
     flex-direction: column;
-    margin-left: 0.5vw;
-    margin-right: 0.5vw;
-    margin-bottom: 2vh;
-}
-
-.address-container h2 {
-    margin: 0.3vw 0;
 }
 
 .address-inputs {
@@ -90,13 +136,13 @@
     justify-content: space-between;
 }
 
-.address-inputs label {
-    margin: 0.2vw 0;
-}
-
 .address-inputs * {
     font-size: 2vh;
     font-weight: 500;
+}
+
+.address-inputs input {
+    margin: 0.25vw 0;
 }
 
 .address-inputs>div {
@@ -108,49 +154,27 @@
 
 .address-inputs-coluna1 {
     flex: 0.3;
-    margin: 0 0.25vw 0.25vw 0;
+    margin: 0.25vw 0.25vw 0.25vw 0;
 }
 
 .address-inputs-coluna2 {
     flex: 0.1;
-    margin: 0 0.25vw;
+    margin: 0.25vw;
 }
 
 .address-inputs-coluna3 {
     flex: 0.2;
-    margin: 0 0.25vw;
+    margin: 0.25vw;
 }
 
 .address-inputs-coluna4 {
     flex: 0.2;
-    margin: 0 0.25vw;
+    margin: 0.25vw;
 }
 
 .address-inputs-coluna5 {
     flex: 0.2;
-    margin: 0 0 0.25vw 0.25vw;
-}
-
-.contract-container * {
-    margin: 0.25vw;
-}
-
-.contract-container {
-    display: flex;
-    flex-direction: row;
-}
-
-.contract-container-coluna1 {
-    display: flex;
-    flex: 0.5;
-    flex-direction: column;
-    margin-right: 1.5vw;
-}
-
-.contract-container-coluna2 {
-    display: flex;
-    flex: 0.5;
-    flex-direction: column;
+    margin: 0.25vw 0 0.25vw 0.25vw;
 }
 
 .buttons-container {
@@ -158,7 +182,6 @@
     flex-direction: row;
     justify-content: flex-end;
     margin-top: 3vh;
-    margin-right: 0.5vw;
 }
 
 .buttons-container button {
@@ -166,16 +189,23 @@
     border-radius: 5px;
     font-size: small;
     padding: 10px 40px;
-    width: 10vw;
+    width: 12vw;
 }
 
-.cancel-button {
+.delete-button {
     background-color: #ececec;
     color: #00000091;
     cursor: pointer;
 }
 
-.add-button {
+.edit-button {
+    background-color: #DDB06F;
+    color: white;
+    cursor: pointer;
+    margin-left: 1.5vw;
+}
+
+.save-button {
     background-color: #7ECC75;
     color: white;
     cursor: pointer;

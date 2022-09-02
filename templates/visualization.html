@@ -17,11 +17,11 @@
     <div class="side-container">
         <img id="logo" src="/static/images/logo.webp" alt="">
         <div class="side-bar-container">
-            <div onclick="window.location.href='/tabela/'">
+            <div id="inbox-sidebar-button">
                 <img src="/static/images/inbox.svg" alt="inbox">
                 <p>Caixa de Entrada</p>
             </div>
-            <div>
+            <div id="notifications-sidebar-button">
                 <img src="/static/images/sino.svg" alt="sino">
                 <p>Notificações</p>
             </div>
@@ -43,7 +43,7 @@
     <div class="main-container">
         <div class="search-container">
             <img src="/static/images/lupa.svg" alt="">
-            <input type="text" placeholder="Pesquisar por empresa">
+            <input id="search-input" type="text" placeholder="Pesquisar">
             <div class="filter-container">
                 <img src="/static/images/stairs.svg" alt="stairs">
                 <div class="filter-tooltip">

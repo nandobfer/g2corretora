@@ -31,12 +31,23 @@ def edit():
 
 @app.route('/tabela/', methods=['GET'])
 def tabela():
-
+    try:
+        if not session.database.connection.is_connected():
+            session.reconnectDatabase()
+    except:
+        pass
+    
     return render_template('visualization.html')
 
 
 @app.route('/try_signup/', methods=['POST'])
 def signup_form():
+    try:
+        if not session.database.connection.is_connected():
+            session.reconnectDatabase()
+    except:
+        pass
+    
     empresa = request.form['empresa']
     documento = request.form['cnpj']
     pessoa = 'juridica'
@@ -86,12 +97,24 @@ def get_table_data():
 
 @app.route('/get_added_buttons/', methods=['GET'])
 def get_added_buttons():
+    try:
+        if not session.database.connection.is_connected():
+            session.reconnectDatabase()
+    except:
+        pass
+    
     status_criados = session.database.fetchTable(0, 'status_criados')
     return str(status_criados)
 
 
 @app.route('/new_button/', methods=['POST'])
 def new_button():
+    try:
+        if not session.database.connection.is_connected():
+            session.reconnectDatabase()
+    except:
+        pass
+    
     button_name = request.form['button_name']
     id = request.form['id']
     sql = f'INSERT INTO status_criados (id,status) VALUES ({id},"{button_name}")'
@@ -101,6 +124,12 @@ def new_button():
 
 @app.route('/change_status/', methods=['POST'])
 def change_status():
+    try:
+        if not session.database.connection.is_connected():
+            session.reconnectDatabase()
+    except:
+        pass
+    
     if not eval(request.form['mass']):
         sql = f'UPDATE cadastros SET status = "{request.form["status"]}" WHERE id = {request.form["id"]}'
         session.database.run(sql, commit=True)

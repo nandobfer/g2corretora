@@ -36,7 +36,7 @@
 .search-container > img:first-of-type {
     position: absolute;
     left: -1vw;
-    height: 4vh;
+    height: 70%;
 }
 
 .search-container > input {
@@ -135,6 +135,10 @@
     width: 100%;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.notifications-exclamation {
+    height: 4vh!important;
 }
 
 .cadastros-vencidos {

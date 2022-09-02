@@ -247,13 +247,16 @@ td > img {
 tbody td {
     text-align: center;
     line-height: 3vh;
-    max-width: 8vw;
 }
 
 tbody td > p {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+tbody td:nth-child(3) {
+    max-width: 8vw;
 }
 
 tbody td .status {

@@ -10,24 +10,39 @@
     margin: 0;
 }
 
+.main-container input {
+    border: none;
+    border-radius: 0.5vw;
+    box-shadow: 0 0 10px rgba(0.2, 0.2, 0.2, 0.2);
+    color: #757575;
+    font-size: 2vh;
+    font-weight: bold;
+    height: 6vh;
+    width: 12vw;
+    margin: 1vh 0;
+    outline: 1px solid #757575;
+    text-align: center;
+}
+
 .search-container {
-    display:flex;
+    display: flex;
     flex-direction: row;
     position: relative;
     align-items: center;
     margin-top: 3vh;
     height: 5vh;
-    outline: 5px solid yellow;;
+    outline: 5px solid yellow;
+    ;
 
 }
 
-.search-container > img:first-of-type {
+.search-container>img:first-of-type {
     position: absolute;
     left: -1vw;
     height: 70%;
 }
 
-.search-container > input {
+.search-container>input {
     flex: 0.9;
     height: 100%;
     border-radius: 2vw;
@@ -38,18 +53,18 @@
     font-size: 2.5vh;
 }
 
-.search-container > img {
+.search-container>img {
     height: 50%;
     margin: 0 2vw;
 }
 
-.search-container > img:last-of-type {
+.search-container>img:last-of-type {
     height: 70%;
 }
 
 .buttons-area {
     margin: 2vh 0;
-    display:flex;
+    display: flex;
     flex-direction: row;
     font-family: Roboto;
     justify-items: normal;
@@ -60,6 +75,7 @@
     flex-direction: column;
     margin-right: 1vw;
     width: 12vw;
+    align-items: center;
 }
 
 .default-button {
@@ -69,6 +85,8 @@
     color: gray;
     font-size: 2vh;
     font-weight: bold;
+    height: 6vh;
+    width: 12vw;
     margin: 1vh 0;
     outline: none;
     padding: 0.75vw;
@@ -81,6 +99,8 @@
     color: gray;
     font-size: 2vh;
     font-weight: bold;
+    height: 6vh;
+    width: 12vw;
     margin: 1vh 0;
     outline: 1px solid darkgray;
     padding: 0.75vw;

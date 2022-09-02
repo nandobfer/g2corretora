@@ -52,6 +52,12 @@
 .round-buttons-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 17vw;
+}
+
+.round-buttons-container img {
+    height: 6vh;
 }
 
 .contract-validity {
@@ -71,14 +77,14 @@
     width: 5vw;
 }
 
-h2 {
+.main-container h2 {
     font-size: large;
     font-weight: bolder;
     margin: 0.4vh 0;
 
 }
 
-p {
+.main-container p {
     font-size: 80%;
     font-weight: normal;
     margin: 0.3vh 0 1.5vh 0;
@@ -106,6 +112,14 @@ p {
     display: flex;
     flex-direction: column;
     flex: 0.5;
+}
+
+#label-cpf {
+    display: none;
+}
+
+#input-cpf {
+    display: none;
 }
 
 .radios-container {

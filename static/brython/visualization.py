@@ -53,8 +53,7 @@ def buildPages(data):
         page = Page(count, button, table)
         pages.append(page)
         jQuery('.pages').append(page.button)
-        jQuery('#next-page').on('click', buildNextPage)
-        jQuery('#previous-page').on('click', buildPreviousPage)
+        
         
         
 
@@ -218,6 +217,7 @@ def buildTable(page):
             jQuery(f'#prazo-{item[0]}').css('color', color)
     jQuery(f'.status').on('click', showStatusTooltip)
     jQuery(f'.action-container').on('click', showActionTooltip)
+    
         
     bindCheckboxes()
     if current_page == pages[0].number:
@@ -229,6 +229,10 @@ def buildTable(page):
         jQuery('#next-page').addClass('deactivated-button')
     else:
         jQuery('#next-page').removeClass('deactivated-button')
+    jQuery('#next-page').off('click')
+    jQuery('#previous-page').off('click')
+    jQuery('#next-page').on('click', buildNextPage)
+    jQuery('#previous-page').on('click', buildPreviousPage)
         
     
 def checkAllBoxes(ev):

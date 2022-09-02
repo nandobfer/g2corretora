@@ -103,7 +103,8 @@ def get_added_buttons():
     except:
         pass
     
-    status_criados = session.database.fetchTable(0, 'status_criados')
+    sql = f'SELECT * FROM status_criados ORDER BY id ASC'
+    status_criados = session.database.run(sql)
     return str(status_criados)
 
 

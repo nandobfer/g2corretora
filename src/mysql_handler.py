@@ -85,11 +85,11 @@ class Mysql():
         DATA requer (ID, USUÁRIO, SENHA, NOME, ENDEREÇO, TIPO DE MEMBRO) '''
 
         try:
-            sql = f"INSERT INTO cadastros (id, nome, email, documento, cep, empresa, status, vencimento, telefone) VALUES ({data['id']}, '{data['nome']}', '{data['email']}', '{data['documento']}', '{data['cep']}', '{data['empresa']}', '{data['status']}', '{data['vencimento']}', '{data['telefone']}')"
+            sql = f"INSERT INTO cadastros (id, nome, email, documento, empresa, status, vencimento, telefone, pessoa, rua, numero, bairro, cidade, estado, contrato, valor, url) VALUES ({data['id']}, '{data['nome']}', '{data['email']}', '{data['documento']}', '{data['empresa']}', '{data['status']}', '{data['contract-validity']}', '{data['telefone']}', '{data['pessoa']}', '{data['rua']}', '{data['numero']}', '{data['bairro']}', '{data['cidade']}', '{data['estado']}', '{data['contract-type']}', '{data['contract-value']}', '{data['url']}')"
             cursor = self.connection.cursor()
             cursor.execute(sql)
         except:
-            sql = f'INSERT INTO cadastros (id, nome, email, documento, cep, empresa, status, vencimento, telefone) VALUES ({data["id"]}, "{data["nome"]}", "{data["email"]}", "{data["documento"]}", "{data["cep"]}", "{data["empresa"]}", "{data["status"]}", "{data["vencimento"]}", "{data["telefone"]}")'
+            sql = f'INSERT INTO cadastros (id, nome, email, documento, empresa, status, vencimento, telefone, pessoa, rua, numero, bairro, cidade, estado, contrato, valor, url) VALUES ({data["id"]}, "{data["nome"]}", "{data["email"]}", "{data["documento"]}", "{data["empresa"]}", "{data["status"]}", "{data["contract-validity"]}", "{data["telefone"]}", "{data["pessoa"]}", "{data["rua"]}", "{data["numero"]}", "{data["bairro"]}", "{data["cidade"]}", "{data["estado"]}", "{data["contract-type"]}", "{data["contract-value"]}", "{data["url"]}")'
             cursor = self.connection.cursor()
             cursor.execute(sql)
 

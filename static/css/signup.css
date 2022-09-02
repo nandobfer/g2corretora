@@ -181,3 +181,12 @@
     cursor: pointer;
     margin-left: 1.5vw;
 }
+
+.disabled-field {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+#input-contract-validity {
+    padding-right: 0.5vw;
+}

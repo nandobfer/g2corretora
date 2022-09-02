@@ -23,10 +23,12 @@ def changePerson(ev):
         documento.attr('maxlength', '14')
         jQuery('.empresa').hide()
         jQuery('.pessoa').show()
+        jQuery('#input-empresa').addClass('disabled-field')
     elif person == 'cnpj':
         documento.attr('maxlength', '18')
         jQuery('.empresa').show()
         jQuery('.pessoa').hide()
+        jQuery('#input-empresa').removeClass('disabled-field')
 
 def maskCPF(ev):
     jQuery('#input-cpf').mask('000.000.000-00')
@@ -39,7 +41,7 @@ def maskPhone(ev):
     jQuery('#input-telefone').mask('(00) 00000-0000')
         
 def sendForm(ev):
-    inputs = document.select('form > input')
+    inputs = document.select('input')
     data = {}
 
     for item in inputs:
@@ -65,4 +67,4 @@ jQuery('document').ready(maskCPF)
 jQuery('document').ready(maskCNPJ)
 jQuery('.radios').on('change', changePerson)
 jQuery('#radio-cpf').prop("checked", True).change()
-jQuery('form').on('submit', sendForm)
+jQuery('#submit-form-button').on('click', sendForm)

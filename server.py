@@ -39,22 +39,34 @@ def tabela():
 def signup_form():
     empresa = request.form['empresa']
     documento = request.form['cnpj']
+    pessoa = 'juridica'
     if not empresa:
         empresa = 'Pessoa física'
         documento = request.form['cpf']
+        pessoa = 'fisica'
 
     try:
         data = {
             'nome': request.form['nome'],
             'email': request.form['email'],
             'documento': documento,
-            'cep': request.form['cep'],
             'telefone': request.form['telefone'],
-            'vencimento': '01/01/2001',
             'status': 'Aguardando',
             'empresa': empresa,
+            'rua': request.form['rua'],
+            'numero': request.form['numero'],
+            'bairro': request.form['bairro'],
+            'cidade': request.form['cidade'],
+            'estado': request.form['estado'],
+            'contract-type': request.form['contract-type'],
+            'contract-validity': request.form['contract-validity'],
+            'contract-value': request.form['contract-value'],
+            'url': request.form['url'],
+            'pessoa': pessoa
+            
         }
         session.signup(data)
+        print(data)
         return 'Sucesso'
     except Exception as error:
         print(error)

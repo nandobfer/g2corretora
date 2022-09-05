@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="/static/brython/brython.js"></script>
     <script type="text/javascript" src="/static/brython/brython_stdlib.js"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="/static/css/sidebar.css">
     <link rel="stylesheet" href="/static/css/visualization.css">
     <title>G2 - Visualização</title>
@@ -56,17 +57,17 @@
                 </div>
                 <div class="notifications-tooltip">
                     <div class="arrow-up"></div>
-                    <div>
+                    <div class="notification-div notification-60">
                         <img class="notifications-exclamation" src="/static/images/warning-black.svg" alt="">
                         <p>Faltam <span class="vencimentos-dias vencimentos-60" id="vencimentos-dias-60">60 dias</span> para o vencimento de <span class="vencimentos-cadastros vencimentos-60" id="vencimentos-cadastros-60">0</span> cadastros.</p>
                     </div>
-                    <hr>
-                    <div>
+                    <hr class="notification-div notification-line-top">
+                    <div class="notification-div notification-30">
                         <img class="notifications-exclamation" src="/static/images/warning-yellow.svg" alt="">
                         <p>Faltam <span class="vencimentos-dias vencimentos-30" id="vencimentos-dias-30">30 dias</span> para o vencimento de <span class="vencimentos-cadastros vencimentos-30" id="vencimentos-cadastros-30">0</span> cadastros.</p>
                     </div>
-                    <hr>
-                    <div>
+                    <hr class="notification-div notification-line-bottom">
+                    <div class="notification-div notification-15">
                         <img class="notifications-exclamation" src="/static/images/warning-red.svg" alt="">
                         <div class="cadastros-vencidos">
                             <p>Faltam <span class="vencimentos-dias vencimentos-15" id="vencimentos-dias-15">15 dias</span> para o vencimento de <span class="vencimentos-cadastros vencimentos-15" id="vencimentos-cadastros-15">0</span> cadastros.</p>

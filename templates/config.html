@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="/static/css/sidebar.css">
     <link rel="stylesheet" href="/static/css/config.css">
     <script type="text/javascript" src="/static/brython/brython.js"></script>
@@ -52,7 +53,7 @@
 
         <div class="buttons-area">
             <div class="buttons-column current-column">
-                <button class="default-button">Aguardando</button class="default-button">
+                <!-- <button class="default-button">Aguardando</button class="default-button"> -->
                 <button class="added-button plusbutton">+</button class="added-button">
             </div>
         </div>
@@ -60,24 +61,24 @@
         <h1>Configurações de Notificações</h1>
         <p>Clique e defina ou edite os status</p>
 
-        <div class="sliders-area">
+        <div class="sliders-area config">
             <div class="sliders-area-row1">
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" id="config-60">
                     <span class="slider"></span>
                 </label>
                 <p>Me notifique quando faltar 60 dias para o término do contrato com o cliente.</p>
             </div>
             <div class="sliders-area-row2">
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" id="config-30">
                     <span class="slider"></span>
                 </label>
                 <p>Me notifique quando faltar 30 dias para o término do contrato com o cliente.</p>
             </div>
             <div class="sliders-area-row3">
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" id="config-15">
                     <span class="slider"></span>
                 </label>
                 <p>Me notifique quando faltar 15 dias para o término do contrato com o cliente.</p>

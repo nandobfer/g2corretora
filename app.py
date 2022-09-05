@@ -103,7 +103,8 @@ def get_added_buttons():
     except:
         pass
     
-    status_criados = session.database.fetchTable(0, 'status_criados')
+    sql = f'SELECT * FROM status_criados ORDER BY id ASC'
+    status_criados = session.database.run(sql)
     return str(status_criados)
 
 
@@ -140,6 +141,32 @@ def change_status():
 
     return 'oi'
 
+@app.route('/change_config/', methods=['POST'])
+def change_config():
+    id = request.form['id']
+    checked = request.form['checked']
+
+    sql = f"UPDATE config SET VALUE = '{str(checked)}' WHERE element = '{id}';"
+    try:
+        session.database.run(sql, commit = True)
+        return 'True'
+    except Exception as error:
+        print(error)
+        return error
+    
+@app.route('/get_config/', methods=['GET'])
+def get_config():
+    try:
+        if not session.database.connection.is_connected():
+            session.reconnectDatabase()
+    except:
+        pass
+    
+    sql = 'SELECT * FROM config ORDER BY id ASC;'
+    data = session.database.run(sql)
+    return str(data)
+
 
 # end of file
-app.run(debug=True, host="0.0.0.0", port="5001")
+if __name__ == '__main__':
+    app.run(debug=True, host="0.0.0.0", port="5002")

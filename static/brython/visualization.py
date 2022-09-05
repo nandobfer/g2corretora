@@ -14,6 +14,7 @@ vencimentos_proximos = {
     "15": []
 }
 vencidos = []
+config = {}
 class Page():
     def __init__(self, number, button, table):
         self.number = number
@@ -260,7 +261,7 @@ def hoverRow(ev):
             
         
 def toggleNotifications(ev):
-    jQuery('.notifications-tooltip').toggle()
+    jQuery('.notifications-tooltip').toggle( "fast" )
     
 def bindCheckboxes():
     jQuery('input[type="checkbox"]:not("#header-checkbox")').on('change', hoverRow)
@@ -288,6 +289,8 @@ def getStatus(req):
     jQuery('#notifications-sidebar-button').on('click', filterTableByNotifications)
     jQuery('#inbox-sidebar-button').on('click', unfilterAll)
     jQuery('.loading-container').fadeToggle()
+    _ajax('/get_config/', getConfig)
+    
     
 def buildNotifications():
     global vencidos
@@ -306,7 +309,10 @@ def buildNotifications():
     if total:
         jQuery('.notifications-circle').show()
         # colocar um browser timer aqui
-        jQuery('.notifications-tooltip').fadeToggle()
+        jQuery('.notifications-tooltip').toggle( "slow" )
+        
+    else:
+        jQuery('.notifications-tooltip').text('Não há notificações no momento')
         
     
 def getVencimentosProximos():
@@ -319,13 +325,21 @@ def getVencimentosProximos():
             if prazo > 60:
                 continue
             elif prazo > 30:
-                vencimentos_proximos["60"].append(cadastro)
+                if config['60']:
+                    vencimentos_proximos["60"].append(cadastro)
+                    jQuery('.notification-60').show()
             elif prazo > 15:
-                vencimentos_proximos["30"].append(cadastro)
+                if config['30']:
+                    vencimentos_proximos["30"].append(cadastro)
+                    jQuery('.notification-30').show()
             elif prazo >= 0:
-                vencimentos_proximos["15"].append(cadastro)
+                if config['15']:
+                    vencimentos_proximos["15"].append(cadastro)
+                    jQuery('.notification-15').show()
             elif prazo < 0:
-                vencidos.append(cadastro)
+                if config['15']:
+                    vencidos.append(cadastro)
+                    jQuery('.notification-15').show()
                 
     buildNotifications()
     
@@ -440,6 +454,22 @@ def searchHandler(ev):
         value = jQuery('#search-input').val()
         filterbySearch(value)
         
+        
+def getConfig(req):
+    global config
+    data = eval(req.text)
+    count = None
+    for item in data:
+        checked = eval(item[2])
+        config.update({item[1].split('-')[1]: checked})
+        
+    if config['60'] and (config['30'] or config['15']):
+        jQuery('.notification-line-top').show()
+    if config['30'] and config['15']:
+        jQuery('.notification-line-bottom').show()
+            
+    getVencimentosProximos()
+        
 def initialRender(req):
     global cadastros
     global original_cadastros
@@ -450,10 +480,12 @@ def initialRender(req):
     buildTable(pages[0])
     bindElements()
     _ajax('/get_added_buttons/', getStatus)
+    jQuery('.notification-div').hide()
     jQuery('.notifications-tooltip').hide()
     jQuery('.filter-tooltip').hide()
     jQuery('.notifications-circle').hide()
-    getVencimentosProximos()
+    
+    
         
     
 _ajax('/get_table_data/', initialRender, method='GET')

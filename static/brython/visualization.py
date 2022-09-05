@@ -143,7 +143,25 @@ def buildMassTooltip():
 def showActionTooltip(ev):
     removeTooltips(True)
     id = ev.target.attrs['id'].split('-')[1]
-    data = str(cadastros[int(id)])
+    data = cadastros[int(id)]
+    cadastro = {
+        "empresa": data[1],
+        "nome": data[2],
+        "email": data[4],
+        "telefone": data[5],
+        "vencimento": data[6],
+        "documento": data[7],
+        "pessoa": data[9],
+        "rua": data[10],
+        "numero": data[11],
+        "bairro": data[12],
+        "cidade": data[13],
+        "estado": data[14],
+        "contrato": data[15],
+        "valor": data[16],
+        "url": data[17]
+    }
+    print(cadastro)
     parent = jQuery(f'#action-container-{id}')
     container = f'<div id="action-tooltip-{id}" class="action-tooltip">\
         <div class="arrow-up"></div>\
@@ -156,7 +174,7 @@ def showActionTooltip(ev):
         </div>\
         <hr>\
         <div>\
-            <p onclick="window.location.href=`/visualizar_cadastro/?id={id}&data={data}`">Ver cadastro</p>\
+            <p onclick="window.location.href=`/visualizar_cadastro/?id={id}&data={cadastro}`">Ver cadastro</p>\
         </div>\
         <hr>\
         <div>\

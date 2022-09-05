@@ -49,9 +49,10 @@ def visualizar_cadastro():
     id = request.args['id']
     
     sql = f'SELECT * FROM cadastros WHERE id = {id}'
-    data = session.database.run(sql)
+    data = session.database.run(sql)[0]
     
-    return render_template('edit.html', id=id, data=data)
+    
+    return render_template('edit.html', id=id)
 
 
 @app.route('/try_signup/', methods=['POST'])

@@ -1,16 +1,18 @@
 const urlParams = new URLSearchParams(window.location.search);
-const id = urlParams.get('id');
+const cadastro_id = urlParams.get('id');
 let data = urlParams.get('data');
-data = data.split(",");
-
-data[0] = data[0].split("[")[1];
-data[data.length - 1] = data[data.length - 1].split("]")[0];
+// substituindo aspas simples por aspas duplas em toda a string
+data = data.replaceAll(`'`, `"`);
+// substituindo o None do python para o null do javascript
+data = data.replaceAll(`None`, `null`);
+// transformando a string em json (objeto)
+data = JSON.parse(data);
 
 console.log(data);
 
 const rcpf = $("#radio-cpf");
 
-var get_person = () => {
+const get_person = () => {
     const person = $(".radios:checked");
     const id = person.attr("id");
 
@@ -23,17 +25,25 @@ var get_person = () => {
     }
 }
 
-var edit_on = () => {
+const edit_on = () => {
     $(".editions-container").removeClass("off");
 }
 
-var edit_off = () => {
+const edit_off = () => {
     $(".editions-container").addClass("off");
 }
 
-var build_profile = () => {
-    $("#nome-da-empresa").text(data[1]);
-    $("#nome-do-representante").text(data[2]);
+const build_profile = () => {
+    data_fields = $('.data-cadastro')
+    for (let field of data_fields) {
+        const id = $(field).attr('id')
+        const value = data[id.slice(5)]
+        if (value) {
+            $(field).text(value)
+        } else {
+            $(field).text('-')
+        }
+    }
 }
 
 $(".radios").on("change", get_person);

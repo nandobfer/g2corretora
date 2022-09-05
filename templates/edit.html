@@ -47,9 +47,9 @@
         <div class="data-container">
             <div class="data-container-coluna1">
                 <h2>Empresa</h2>
-                <p>At varius vel pharetra</p>
+                <p id="nome-da-empresa">At varius vel pharetra</p>
                 <h2>Representante</h2>
-                <p>Velit laoreet id</p>
+                <p id="nome-do-representante">Velit laoreet id</p>
                 <h2>Email</h2>
                 <p>velitlaoreetid@gmail.com</p>
                 <div class="round-buttons-container">
@@ -82,68 +82,61 @@
             </div>
         </div>
 
-        <div class="id-container">
-            <div class="id-container-coluna1">
-
-                <label for="input-empresa">Empresa</label>
-                <input id="input-empresa" type="text" placeholder="Empresa">
-
-                <label for="input-telefone">Telefone</label>
-                <input id="input-telefone" type="text" maxlength="15" placeholder="Telefone">
-
-                <div class="radios-container">
-                    <h2>Pessoa</h2>
-                    <div class="radios-inputs">
-                        <div class="radios-inputs-coluna1">
-                            <input class="radios" type="radio" id="radio-cpf" value="cpf" name="person">
-                            <label for="radio-cpf">Física</label>
-                        </div>
-                        <div class="radios-inputs-coluna2">
-                            <input class="radios" type="radio" id="radio-cnpj" value="cnpj" name="person">
-                            <label for="radio-cnpj">Jurídica</label>
+        <div class="editions-container off">
+            <div class="id-container">
+                <div class="id-container-coluna1">
+                    <label for="input-empresa">Empresa</label>
+                    <input id="input-empresa" type="text" placeholder="Empresa">
+                    <label for="input-telefone">Telefone</label>
+                    <input id="input-telefone" type="text" maxlength="15" placeholder="Telefone">
+                    <div class="radios-container">
+                        <h2>Pessoa</h2>
+                        <div class="radios-inputs">
+                            <div class="radios-inputs-coluna1">
+                                <input class="radios" type="radio" id="radio-cpf" value="cpf" name="person">
+                                <label for="radio-cpf">Física</label>
+                            </div>
+                            <div class="radios-inputs-coluna2">
+                                <input class="radios" type="radio" id="radio-cnpj" value="cnpj" name="person">
+                                <label for="radio-cnpj">Jurídica</label>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="id-container-coluna2">
+                    <label for="input-nome">Representante</label>
+                    <input id="input-nome" type="text" placeholder="Representante">
+                    <label for="input-email">E-mail</label>
+                    <input id="input-email" type="email" placeholder="E-mail">
+                    <label class="empresa" id="label-cnpj" for="input-cnpj">CNPJ</label>
+                    <input class="empresa" id="input-cnpj" type="text" placeholder="CNPJ">
+                    <label class="pessoa-fisica" id="label-cpf" for="input-cpf">CPF</label>
+                    <input class="pessoa-fisica" id="input-cpf" type="text" placeholder="CPF">
+                </div>
             </div>
-            <div class="id-container-coluna2">
-
-                <label for="input-nome">Representante</label>
-                <input id="input-nome" type="text" placeholder="Representante">
-
-                <label for="input-email">E-mail</label>
-                <input id="input-email" type="email" placeholder="E-mail">
-
-                <label class="empresa" id="label-cnpj" for="input-cnpj">CNPJ</label>
-                <input class="empresa" id="input-cnpj" type="text" placeholder="CNPJ">
-
-                <label class="pessoa-fisica" id="label-cpf" for="input-cpf">CPF</label>
-                <input class="pessoa-fisica" id="input-cpf" type="text" placeholder="CPF">
-
-            </div>
-        </div>
-
-        <div class="address-container">
-            <h2>Endereço</h2>
-            <div class="address-inputs">
-                <div class="address-inputs-coluna1">
-                    <label for="input-rua">Rua</label>
-                    <input id="input-rua" type="text" placeholder="Rua">
-                </div>
-                <div class="address-inputs-coluna2">
-                    <label for="input-numero">Número</label>
-                    <input id="input-numero" type="text" placeholder="Número">
-                </div>
-                <div class="address-inputs-coluna3">
-                    <label for="input-bairro">Bairro</label>
-                    <input id="input-bairro" type="text" placeholder="Bairro">
-                </div>
-                <div class="address-inputs-coluna4">
-                    <label for="input-cidade">Cidade</label>
-                    <input id="input-cidade" type="text" placeholder="Cidade">
-                </div>
-                <div class="address-inputs-coluna5">
-                    <label for="input-estado">Estado</label>
-                    <input id="input-estado" type="text" placeholder="Estado">
+            <div class="address-container">
+                <h2>Endereço</h2>
+                <div class="address-inputs">
+                    <div class="address-inputs-coluna1">
+                        <label for="input-rua">Rua</label>
+                        <input id="input-rua" type="text" placeholder="Rua">
+                    </div>
+                    <div class="address-inputs-coluna2">
+                        <label for="input-numero">Número</label>
+                        <input id="input-numero" type="text" placeholder="Número">
+                    </div>
+                    <div class="address-inputs-coluna3">
+                        <label for="input-bairro">Bairro</label>
+                        <input id="input-bairro" type="text" placeholder="Bairro">
+                    </div>
+                    <div class="address-inputs-coluna4">
+                        <label for="input-cidade">Cidade</label>
+                        <input id="input-cidade" type="text" placeholder="Cidade">
+                    </div>
+                    <div class="address-inputs-coluna5">
+                        <label for="input-estado">Estado</label>
+                        <input id="input-estado" type="text" placeholder="Estado">
+                    </div>
                 </div>
             </div>
         </div>

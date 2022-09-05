@@ -90,6 +90,11 @@
     margin: 0.3vh 0 1.5vh 0;
 }
 
+.off {
+    opacity: 0.2;
+    pointer-events: none;
+}
+
 .id-container * {
     font-size: large;
     font-weight: bold;
@@ -113,8 +118,6 @@
     flex-direction: column;
     flex: 0.5;
 }
-
-.pessoa-fisica {}
 
 .radios-container {
     display: flex;

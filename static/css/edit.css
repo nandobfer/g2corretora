@@ -114,13 +114,7 @@
     flex: 0.5;
 }
 
-#label-cpf {
-    display: none;
-}
-
-#input-cpf {
-    display: none;
-}
+.pessoa-fisica {}
 
 .radios-container {
     display: flex;

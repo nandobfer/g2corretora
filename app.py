@@ -41,8 +41,17 @@ def tabela():
 
 @app.route('/visualizar_cadastro/', methods=['GET'])
 def visualizar_cadastro():
+    try:
+        if not session.database.connection.is_connected():
+            session.reconnectDatabase()
+    except:
+        pass
     id = request.args['id']
-    return render_template('edit.html', id=id)
+    
+    sql = f'SELECT * FROM cadastros WHERE id = {id}'
+    data = session.database.run(sql)
+    
+    return render_template('edit.html', id=id, data=data)
 
 
 @app.route('/try_signup/', methods=['POST'])

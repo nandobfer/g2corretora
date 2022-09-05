@@ -155,7 +155,7 @@ def showActionTooltip(ev):
         </div>\
         <hr>\
         <div>\
-            <p>Ver cadastro</p>\
+            <p onclick="window.location.href=`/visualizar_cadastro/?id={id}`">Ver cadastro</p>\
         </div>\
         <hr>\
         <div>\

@@ -39,6 +39,11 @@ def tabela():
     
     return render_template('visualization.html')
 
+@app.route('/visualizar_cadastro/', methods=['GET'])
+def visualizar_cadastro():
+    id = request.args['id']
+    return render_template('edit.html', id=id)
+
 
 @app.route('/try_signup/', methods=['POST'])
 def signup_form():

@@ -141,6 +141,31 @@ def change_status():
 
     return 'oi'
 
+@app.route('/change_config/', methods=['POST'])
+def change_config():
+    id = request.form['id']
+    checked = request.form['checked']
+
+    sql = f"UPDATE config SET VALUE = '{str(checked)}' WHERE element = '{id}';"
+    try:
+        session.database.run(sql, commit = True)
+        return 'True'
+    except Exception as error:
+        print(error)
+        return error
+    
+@app.route('/get_config/', methods=['GET'])
+def get_config():
+    try:
+        if not session.database.connection.is_connected():
+            session.reconnectDatabase()
+    except:
+        pass
+    
+    sql = 'SELECT * FROM config ORDER BY id ASC;'
+    data = session.database.run(sql)
+    return str(data)
+
 
 # end of file
 if __name__ == '__main__':

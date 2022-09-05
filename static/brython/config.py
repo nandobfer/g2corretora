@@ -54,6 +54,8 @@ def add_button(req):
 
         if jquery('.current-column > button').length == 1:
             change_plusbutton()
+            
+    _ajax('/get_config/', getConfig)
 
 
 def get_added_buttons():
@@ -96,10 +98,26 @@ def new_status(ev):
     form.on('submit', submit)
     input.focus()
 
+def changeConfig(ev, element):
+    checked = element.prop('checked')
+    id = element.attr('id')
+    _ajax('/change_config/', lambda req : print(req.text), 'POST', data = {'id': id, 'checked' : checked})
+
+def getConfig(req):
+    data = eval(req.text)
+    for item in data:
+        element = jquery(f'#{item[1]}')
+        checked = eval(item[2])
+        if checked:
+            element.prop('checked', True).change()
+        
 
 def pre_render():
     get_added_buttons()
     plusbutton.on('click', new_status)
+    jquery('#config-60').on('click', lambda ev : changeConfig(ev, jquery('#config-60')))
+    jquery('#config-30').on('click', lambda ev : changeConfig(ev, jquery('#config-30')))
+    jquery('#config-15').on('click', lambda ev : changeConfig(ev, jquery('#config-15')))
 
 
 pre_render()

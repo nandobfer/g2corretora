@@ -1,15 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const cadastro_id = urlParams.get('id');
 let data = urlParams.get('data');
-// substituindo aspas simples por aspas duplas em toda a string
-data = data.replaceAll(`'`, `"`);
-// substituindo o None do python para o null do javascript
-data = data.replaceAll(`None`, `null`);
-// transformando a string em json (objeto)
-data = JSON.parse(data);
-
-console.log(data);
-
 const rcpf = $("#radio-cpf");
 
 const get_person = () => {
@@ -45,6 +36,27 @@ const build_profile = () => {
         }
     }
 }
+
+const formatDate = (text) => {
+    let day, month, year;
+    let date = text.split('-');
+    day = date[2];
+    month = date[1];
+    year = date[0];
+    date = `${day}/${month}/${year}`;
+
+    return date;
+}
+
+// substituindo aspas simples por aspas duplas em toda a string
+data = data.replaceAll(`'`, `"`);
+// substituindo o None do python para o null do javascript
+data = data.replaceAll(`None`, `null`);
+// transformando a string em json (objeto)
+data = JSON.parse(data);
+data.vencimento = formatDate(data.vencimento)
+
+console.log(data);
 
 $(".radios").on("change", get_person);
 

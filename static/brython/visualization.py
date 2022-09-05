@@ -261,7 +261,7 @@ def hoverRow(ev):
             
         
 def toggleNotifications(ev):
-    jQuery('.notifications-tooltip').toggle()
+    jQuery('.notifications-tooltip').toggle( "fast" )
     
 def bindCheckboxes():
     jQuery('input[type="checkbox"]:not("#header-checkbox")').on('change', hoverRow)
@@ -309,7 +309,7 @@ def buildNotifications():
     if total:
         jQuery('.notifications-circle').show()
         # colocar um browser timer aqui
-        jQuery('.notifications-tooltip').fadeToggle()
+        jQuery('.notifications-tooltip').toggle( "slow" )
         
     else:
         jQuery('.notifications-tooltip').text('Não há notificações no momento')

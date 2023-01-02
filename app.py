@@ -184,4 +184,5 @@ def get_config():
 
 # end of file
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port="5002")
+    context = ('../ssl/certs/sistema_g2corretora_com_br_a4c7f_19251_1669889305_ad3dfb566c05b98143d221b43261d932.crt', '../ssl/keys/a4c7f_19251_776d999e8a12d4d31683cd7deecce633.key')
+    app.run(debug=True, host="0.0.0.0", port="5002", ssl_context=context)
